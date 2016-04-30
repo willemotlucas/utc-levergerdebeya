@@ -39,5 +39,5 @@
   </div>
 </div>
 
-<script type="text/javascript" src="<?php echo(VENDORS.'semantic/components/accordion.js'); ?>"></script>
-<script type="text/javascript" src="<?php echo(JS.'view_all_users.js'); ?>"></script>
+<script type="text/javascript" src="<?php echo semantic_components_url('accordion.js'); ?>"></script>
+<script type="text/javascript" src="<?php echo js_url('view_all_users'); ?>"></script>
