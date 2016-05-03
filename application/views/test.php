@@ -5,39 +5,60 @@
     </th>
   </tr></thead>
   <tbody>
-        <?php foreach($users as $user) : ?>
+        <?php foreach($utilisateur as $u) : ?>
         <tr>
-                <td><?php echo $user->username; ?></td>
-                <td><?php echo $user->email; ?></td>
+                <td><?php echo $u->nom; ?></td>
+                <td><?php echo $u->prenom; ?></td>
+                <td><?php echo $u->email; ?></td>
+                <td><?php echo $u->date_naissance; ?></td>
+                <td><?php echo $u->ville; ?></td>
         </tr>
         <?php endforeach; ?>
   </tbody>
 </table>
 
-<div class="ui styled accordion">
-  <div class="active title">
-    <i class="dropdown icon"></i>
-    What is a dog?
-  </div>
-  <div class="active content">
-    <p>A dog is a type of domesticated animal. Known for its loyalty and faithfulness, it can be found as a welcome guest in many households across the world.</p>
-  </div>
-  <div class="title">
-    <i class="dropdown icon"></i>
-    What kinds of dogs are there?
-  </div>
-  <div class="content">
-    <p>There are many breeds of dogs. Each breed varies in size and temperament. Owners often select a breed of dog that they find to be compatible with their own lifestyle and desires from a companion.</p>
-  </div>
-  <div class="title">
-    <i class="dropdown icon"></i>
-    How do you acquire a dog?
-  </div>
-  <div class="content">
-    <p>Three common ways for a prospective owner to acquire a dog is from pet shops, private owners, or shelters.</p>
-    <p>A pet shop may be the most convenient way to buy a dog. Buying a dog from a private owner allows you to assess the pedigree and upbringing of your dog before choosing to take it home. Lastly, finding your dog from a shelter, helps give a good home to a dog who may not find one so readily.</p>
-  </div>
-</div>
+<table class="ui celled striped table">
+  <thead>
+    <tr><th colspan="3">
+      Ville Livraison
+    </th>
+  </tr></thead>
+  <tbody>
+        <?php foreach($ville_livraison as $v) : ?>
+        <tr>
+                <td><?php echo $v->code_postal; ?></td>
+                <td><?php echo $v->ville; ?></td>
+        </tr>
+        <?php endforeach; ?>
+  </tbody>
+</table>
 
-<script type="text/javascript" src="<?php echo semantic_components_url('accordion.js'); ?>"></script>
-<script type="text/javascript" src="<?php echo js_url('view_all_users'); ?>"></script>
+<table class="ui celled striped table">
+  <thead>
+    <tr><th colspan="3">
+      Ville Livraison
+    </th>
+  </tr></thead>
+  <tbody>
+        <?php foreach($famille as $f) : ?>
+        <tr>
+                <td><?php echo $f->denomination; ?></td>
+        </tr>
+        <?php endforeach; ?>
+  </tbody>
+</table>
+
+<table class="ui celled striped table">
+  <thead>
+    <tr><th colspan="3">
+      Ville Livraison
+    </th>
+  </tr></thead>
+  <tbody>
+        <?php foreach($categorie as $c) : ?>
+        <tr>
+                <td><?php echo $c->denomination; ?></td>
+        </tr>
+        <?php endforeach; ?>
+  </tbody>
+</table>

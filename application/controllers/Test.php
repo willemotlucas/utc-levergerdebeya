@@ -13,7 +13,10 @@ class Test extends CI_Controller
     public function index()
     {
             // load all of our posts
-            $data['users'] = Model\User::all();
+            $data['utilisateur'] = Model\Utilisateur::all();
+            $data['ville_livraison'] = Model\Ville_Livraison::all();
+            $data['famille'] = Model\Famille::all();
+            $data['categorie'] = Model\Categorie::all();
 
             // build our blog table
             $data['content'] = $this->load->view('test', $data, TRUE);
