@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
         <head>
-        		<meta charset="utf-8"/>
+        	<meta charset="utf-8"/>
                 <title>Our Awesome Blog using GasORM</title>
                 
 				<link rel="stylesheet" href="<?php echo semantic_css_url('semantic'); ?>">

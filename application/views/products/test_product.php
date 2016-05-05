@@ -1,7 +1,7 @@
 <table class="ui celled striped table">
   <thead>
     <tr><th colspan="3">
-      Users
+      Test products
     </th>
   </tr></thead>
   <tbody>
