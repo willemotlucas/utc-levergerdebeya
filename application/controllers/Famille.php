@@ -29,4 +29,12 @@ class Famille extends CI_Controller
         $this->layout->views('layout/menu_public', $data_menu)
         ->view('../views/families/view_details_family', $data);
     }
+
+    public function admin_add(){
+        //TODO: Check if the current user is administrator
+
+        $this->load->library('layout');
+        $this->layout->views('layout/menu_admin')
+        ->view('../views/families/view_add_form');
+    }
 }

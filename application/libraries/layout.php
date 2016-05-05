@@ -56,6 +56,11 @@ class Layout
         $this->add_css('menu');
     }
 
+    public function include_admin_menu()
+    {
+        $this->include_public_menu();
+    }
+
     public function set_titre($titre)
     {
         if(is_string($titre) AND !empty($titre))
