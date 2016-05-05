@@ -43,10 +43,75 @@
             <i class="search link icon"></i>
           </div>
         </div>
-        <a class="item">
+        <a id="login" class="item">
           <i class="user icon"></i>
           Espace utilisateur
         </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="ui modal">
+  <i class="close icon"></i>
+  <div class="content">
+    <div class="ui two column very relaxed stackable grid">
+      <div class="column">
+        <h3>Vous n'avez pas encore de compte ? <br/> Inscrivez-vous, c'est gratuit !</h3>
+        
+        <?php echo validation_errors(); ?>
+        <?php echo form_open('utilisateur/signup'); ?>
+          <div class="ui form">
+            <div class="field">
+              <label>Adresse e-mail</label>
+              <div class="ui left icon input">
+                <input name="email" type="text" placeholder="E-mail">
+                <i class="user icon"></i>
+              </div>
+            </div>
+            <div class="field">
+              <label>Mot de passe</label>
+              <div class="ui left icon input">
+                <input name="password" type="password">
+                <i class="lock icon"></i>
+              </div>
+            </div>
+            <div class="field">
+              <label>Confirmation du mot de passe</label>
+              <div class="ui left icon input">
+                <input name="confpassword" type="password">
+                <i class="lock icon"></i>
+              </div>
+            </div>
+            <button type="submit" class="ui custom-green submit button">S'inscrire</button>
+          </div>
+        </form>
+      </div>
+      <div class="ui vertical divider">
+        OU
+      </div>
+      <div class="column">
+        <h3>Vous possédez déjà un compte ? <br/> Connectez-vous !</h3>
+
+        <?php echo validation_errors(); ?>
+        <?php echo form_open('utilisateur/login'); ?>
+        <div class="ui form">
+          <div class="field">
+            <label>Adresse e-mail</label>
+            <div class="ui left icon input">
+              <input name="email" type="text" placeholder="E-mail">
+              <i class="user icon"></i>
+            </div>
+          </div>
+          <div class="field">
+            <label>Mot de passe</label>
+            <div class="ui left icon input">
+              <input name="password" type="password">
+              <i class="lock icon"></i>
+            </div>
+          </div>
+          <button type="submit" class="ui custom-green submit button">Se connecter</button>
+        </div>
       </div>
     </div>
   </div>

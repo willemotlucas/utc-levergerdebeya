@@ -1,18 +1,18 @@
-<div class="ui grid">
+<div class="ui grid container">
 	<div class="ui breadcrumb">
 	  <a href="<?php echo base_url() . 'index.php'; ?>" class="section">Accueil</a>
 	  <div class="divider"> / </div>
-	  <a href="<?php echo base_url() . 'index.php/famille/details/' . $category->family()->id; ?>" class="section"><?php echo $category->family()->denomination;?></a>
+	  <a href="<?php echo base_url() . 'index.php/famille/details/' . $category->family()->id; ?>" class="section"><?php echo ucfirst($category->family()->denomination);?></a>
 	  <div class="divider"> / </div>
-	  <a href="<?php echo base_url() . 'index.php/categorie/details/' . $category->id; ?>" class="section"><?php echo $category->denomination;?></a>
+	  <a href="<?php echo base_url() . 'index.php/categorie/details/' . $category->id; ?>" class="section"><?php echo ucfirst($category->denomination);?></a>
 	</div>
 </div>
 
-<div class="ui grid">
+<div class="ui grid container">
 	<h1 class="ui header"><?php echo ucfirst($category->denomination); ?></h1>
 </div>
 
-<div class="ui four column centered grid">
+<div class="ui four column centered grid container">
 	<?php foreach($products as $product):?>
 		<div class="column">
 			<div class="segment">

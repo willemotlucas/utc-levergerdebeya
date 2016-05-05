@@ -1,5 +1,9 @@
 /*
- * Set the grid width
+ * ---------------------
+ *
+ * set the website content width
+ *
+ * ---------------------
 */
 .ui.grid {
 	margin-left: 15%;
@@ -9,7 +13,7 @@
 /*
  * ---------------------
  *
- * view_all_categories
+ * custom cards
  *
  * ---------------------
 */
@@ -37,12 +41,56 @@ div.card > div.description > p {
 	margin: 2% 0 2% 2% !important;
 }
 
+/*
+ * ---------------------
+ *
+ * custom menu
+ *
+ * ---------------------
+*/
+div.menu > div.header > a {
+	color: #9DAB46 !important;
+	text-decoration : underline !important;
+}
+
+div.menu > div.item > a {
+	color: black !important;
+}
+
+div.menu > div.item > span.text > a {
+	color: black !important;
+}
+
+/*
+ * ---------------------
+ *
+ * custom login modal
+ *
+ * ---------------------
+*/
+
+div.modal h3 {
+	text-align: center !important;
+}
+
+/*
+ * ---------------------
+ *
+ * custom button with custom green-color
+ *
+ * ---------------------
+*/
+
 button.custom-green > a {
 	color:white!important;
 }
 
 /*
- $ custom-green color
+ * ---------------------
+ *
+ * custom green-color
+ *
+ * ---------------------
 */
 
 .ui.custom-green.buttons .button,

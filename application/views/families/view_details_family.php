@@ -2,7 +2,7 @@
 	<div class="ui breadcrumb">
 	  <a href="<?php echo base_url() . 'index.php'; ?>" class="section">Accueil</a>
 	  <div class="divider"> / </div>
-	  <a href="<?php echo base_url() . 'index.php/famille/details/' . $famille->id; ?>" class="section"><?php echo $famille->denomination;?></a>
+	  <a href="<?php echo base_url() . 'index.php/famille/details/' . $famille->id; ?>" class="section"><?php echo ucfirst($famille->denomination);?></a>
 	</div>
 </div>
 
