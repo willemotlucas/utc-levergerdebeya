@@ -6,23 +6,23 @@
             <span class="text"><?php echo $famille->denomination ?></span>
             <i class="dropdown icon"></i>
             <div class="menu">
-              <div class="header"><a href="<?php echo(base_url('index.php/famille/view/' . $famille->id)); ?>">Catégories</a></div>
-              <?php foreach($famille->categories() as $categorie):
-                if($categorie->produits()){
+              <div class="header"><a href="<?php echo(base_url('index.php/famille/details/' . $famille->id)); ?>">Catégories</a></div>
+              <?php foreach($famille->categories() as $category):
+                if($category->products()){
               ?>
                 <div class="item">
                   <i class="dropdown icon"></i>
-                  <span class="text"><a href="<?php echo(base_url('index.php/categorie/view/' . $categorie->id)); ?>"><?php echo $categorie->denomination ?></a></span>
+                  <span class="text"><a href="<?php echo(base_url('index.php/categorie/details/' . $category->id)); ?>"><?php echo $category->denomination ?></a></span>
                   <div class="menu">
-                  <?php foreach($categorie->produits() as $produit):?>
-                    <div class="item"><?php echo $produit->denomination ?></div>
+                  <?php foreach($category->products() as $product):?>
+                    <div class="item"><?php echo $product->denomination ?></div>
                   <?php endforeach; ?>
                 </div>
               </div>
               <?php     
                 }else{
               ?>
-                <div class="item"><a href="<?php echo(base_url('index.php/categorie/view/' . $categorie->id)); ?>"><?php echo $categorie->denomination ?></a></div>
+                <div class="item"><a href="<?php echo(base_url('index.php/categorie/details/' . $category->id)); ?>"><?php echo $category->denomination ?></a></div>
               <?php    
                 }
               ?>

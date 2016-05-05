@@ -21,7 +21,7 @@ class Produit extends ORM {
                         'id'                    =>              ORM::field('int[11]'),
                         'denomination'          =>              ORM::field('char[50]'),
                         'origine'               =>              ORM::field('char[50]'),
-                        'prix'                  =>              ORM::field('int[10]'),
+                        'prix'                  =>              ORM::field('float'),
                         'typeVente'             =>              ORM::field('char[50]'),
                         'description'           =>              ORM::field('string'),
                         'produit_du_moment'     =>              ORM::field('int[1]'),

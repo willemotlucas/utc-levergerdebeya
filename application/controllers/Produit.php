@@ -1,6 +1,6 @@
 <?php if (!defined('BASEPATH')) die ('No direct script access allowed!');
 
-class Famille extends CI_Controller
+class Produit extends CI_Controller
 {
     public function __construct()
     {
@@ -9,10 +9,9 @@ class Famille extends CI_Controller
 
     public function details($id)
     {
-        //Retrieve the family with the given id
-        $data['famille'] = Model\Famille::find($id);
+        $data['product'] = Model\Produit::find($id);
         //If the result is null, 404 error is shown
-        if(is_null($data['famille'])){
+        if(is_null($data['product'])){
             show_404();
             return;
         }
@@ -23,10 +22,7 @@ class Famille extends CI_Controller
         $this->layout->include_public_menu();
         $data_menu['familles'] = Model\Famille::all();
 
-        //Retrieve all categories for the given family
-        $data['categories'] = $data['famille']->categories();
-
         $this->layout->views('layout/menu_public', $data_menu)
-        ->view('../views/families/view_details_family', $data);
+        ->view('../views/products/view_details_product', $data);
     }
 }

@@ -1,8 +1,8 @@
 <div class="ui grid">
 	<div class="ui breadcrumb">
-	  <a class="section">Accueil</a>
+	  <a href="<?php echo base_url() . 'index.php'; ?>" class="section">Accueil</a>
 	  <div class="divider"> / </div>
-	  <a class="section"><?php echo $famille->denomination;?></a>
+	  <a href="<?php echo base_url() . 'index.php/famille/details/' . $famille->id; ?>" class="section"><?php echo $famille->denomination;?></a>
 	</div>
 </div>
 
@@ -16,7 +16,7 @@
 			<div class="segment">
 				<div class="ui card">
 				  <div class="content center aligned">
-				  	<a class="header" href="<?php echo base_url() . 'index.php/categorie/view/' . $categorie->id; ?>"><?php echo $categorie->denomination; ?></a>
+				  	<a class="header" href="<?php echo base_url() . 'index.php/categorie/details/' . $categorie->id; ?>"><?php echo $categorie->denomination; ?></a>
 				  </div>
 				  <div class="image">
 				    <img src="http://placehold.it/350x200">

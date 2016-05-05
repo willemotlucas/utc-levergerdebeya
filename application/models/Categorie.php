@@ -13,8 +13,8 @@ class Categorie extends ORM {
         {
         	    // Relationship definition
 		        self::$relationships = array(
-		                'famille'  => ORM::belongs_to('\\Model\\Famille'),
-		                'produits'  => ORM::has_many('\\Model\\Produit')
+		                'family'  => ORM::belongs_to('\\Model\\Famille'),
+		                'products'  => ORM::has_many('\\Model\\Produit')
 		        );
 
                 self::$fields = array(
