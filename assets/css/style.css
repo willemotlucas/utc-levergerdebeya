@@ -1,0 +1,34 @@
+/*
+ * Set the grid width
+*/
+.ui.grid {
+	margin-left: 15%;
+	margin-right: 15%;
+}
+
+/*
+ * ---------------------
+ *
+ * view_all_categories
+ *
+ * ---------------------
+*/
+
+div.breadcrumb {
+	margin-top: 2% !important;
+	margin-bottom: 2% !important;
+}
+
+h1.header {
+	margin-top: 2% !important;
+	margin-bottom: 2% !important;
+	color: #9DAB46 !important;
+}
+
+div.card > div.content {
+	background-color: #EA7F17 !important;
+}
+
+div.card > div.content > a.header {
+	color: white !important;
+}

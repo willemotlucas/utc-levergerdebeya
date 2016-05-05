@@ -60,7 +60,7 @@ if ( ! function_exists('semantic_components_url'))
 {
     function semantic_components_url($nom)
     {
-        return vendors_url("semantic") . "/components/" . $nom;
+        return vendors_url("semantic") . "components/" . $nom;
     }
 }
 

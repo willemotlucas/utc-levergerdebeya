@@ -13,12 +13,12 @@ class Famille extends ORM {
         {
                 // Relationship definition
                 self::$relationships = array(
-                        'categorie'  => ORM::has_many('\\Model\\Categorie')
+                        'categories'  => ORM::has_many('\\Model\\Categorie')
                 );
 
                 self::$fields = array(
                         'id'                    =>              ORM::field('int[11]'),
-                        'denomination'          =>              ORM::field('char[50]')
+                        'denomination'          =>              ORM::field('char[50]', array('required', 'max_length[50]'))
                 );
         }
 }

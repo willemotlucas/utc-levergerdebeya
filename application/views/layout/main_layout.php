@@ -9,9 +9,7 @@
     </head>
 
     <body>
-        <div id="contenu">
-            <?php echo $output; ?>
-        </div>
+        <?php echo $output; ?>
 
         <?php foreach($js as $url): ?>
         	<script type="text/javascript" src="<?php echo $url; ?>"></script> 

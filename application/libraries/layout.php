@@ -25,8 +25,8 @@ class Layout
         //  la clé de configuration initialisée dans le fichier config.php
         $this->var['charset'] = $this->CI->config->item('charset');
 
-        $this->var['css'] = array(semantic_css_url('semantic'));
-        $this->var['js'] = array(jquery_url('jquery.min'));
+        $this->var['css'] = array(semantic_css_url('semantic'), css_url('style'));
+        $this->var['js'] = array(jquery_url('jquery.min'), semantic_js_url('semantic'));
     }
     
     /*
@@ -48,6 +48,12 @@ class Layout
     {
         $this->var['output'] .= $this->CI->load->view($name, $data, true);
         return $this;
+    }
+
+    public function include_public_menu()
+    {
+        $this->add_js('menu');
+        $this->add_css('menu');
     }
 
     public function set_titre($titre)
@@ -87,24 +93,43 @@ class Layout
     |   . ajouter_js
     |===============================================================================
     */
-    public function ajouter_css($nom)
+    public function add_css($nom)
     {
         if(is_string($nom) AND !empty($nom) AND file_exists('./assets/css/' . $nom . '.css'))
         {
-            $this->var['css'][] = css_url($nom);
+            array_push($this->var['css'], css_url($nom));
             return true;
         }
         return false;
     }
 
-    public function ajouter_js($nom)
+    public function add_js($nom)
     {
-        if(is_string($nom) AND !empty($nom) AND file_exists('./assets/javascript/' . $nom . '.js'))
+        if(is_string($nom) AND !empty($nom))
         {
-            $this->var['js'][] = js_url($nom);
+            array_push($this->var['js'],js_url($nom));
             return true;
         }
         return false;
     }
 
+    public function add_semantic_css_component($nom){
+        if(is_string($nom) AND !empty($nom))
+        {
+            array_push($this->var['css'],semantic_components_url($nom . '.css'));
+            return true;
+        }
+        //var_dump($this->var['css']);
+        return false;
+    }
+
+    public function add_semantic_js_component($nom){
+        if(is_string($nom) AND !empty($nom))
+        {
+            array_push($this->var['js'],semantic_components_url($nom . '.js'));
+            return true;
+        }
+        //var_dump($this->var['css']);
+        return false;
+    }
 }
