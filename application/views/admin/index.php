@@ -27,8 +27,8 @@
 	    <thead>
 	        <tr>
 	            <th>Nom</th>
-	            <th>Nombre de fruits</th>
-	            <th>Voir tous les fruits</th>
+	            <th>Nombre de <?php echo strtolower($family->denomination); ?></th>
+	            <th>Voir tous les <?php echo strtolower($family->denomination); ?></th>
 	            <th>Modifier</th>
 	            <th>Supprimer</th>
 	        </tr>
