@@ -7,25 +7,8 @@
             <i class="dropdown icon"></i>
             <div class="menu">
               <div class="header"><a href="<?php echo(base_url('index.php/famille/details/' . $famille->id)); ?>">Catégories</a></div>
-              <?php foreach($famille->categories() as $category):
-                if($category->products()){
-              ?>
-                <div class="item">
-                  <i class="dropdown icon"></i>
-                  <span class="text"><a href="<?php echo(base_url('index.php/categorie/details/' . $category->id)); ?>"><?php echo $category->denomination ?></a></span>
-                  <div class="menu">
-                  <?php foreach($category->products() as $product):?>
-                    <div class="item"><?php echo $product->denomination ?></div>
-                  <?php endforeach; ?>
-                </div>
-              </div>
-              <?php     
-                }else{
-              ?>
+              <?php foreach($famille->categories() as $category):?>
                 <div class="item"><a href="<?php echo(base_url('index.php/categorie/details/' . $category->id)); ?>"><?php echo $category->denomination ?></a></div>
-              <?php    
-                }
-              ?>
             <?php endforeach; ?>  
             </div>
           </div>
