@@ -54,6 +54,8 @@ class Categorie extends CI_Controller
             //Return html corresponding to the form
             echo $output;
         }
+
+
         else if($method == "POST")
         {
             $category_name = $this->input->post('category_name', TRUE);
@@ -61,11 +63,19 @@ class Categorie extends CI_Controller
 
             $category = Model\Categorie::find($category_id);
 
-            if(!is_null($category)){
-                $category->denomination = $category_name;
+            if(!is_null($category)){                
+                $this->load->helper(array('form', 'url'));
+                $this->load->library('form_validation');
+                $this->load->library('session'); 
 
-                if($category->save()){
-                    echo "id : " . $category_id . " name : " . $category_name;
+                $this->form_validation->set_rules('category_name', 'Nom de la catégorie', 'required|max_length[50]');
+                
+                if($this->form_validation->run() == false){
+                    $this->session->set_flashdata('edit-category-error','Une erreur est survenue ...'); 
+                }else{
+                    $category->denomination = $category_name;
+                    $category->save();
+                    $this->session->set_flashdata('edit-category-success','La catégorie a bien été modifée.');
                 }
             }
         }

@@ -21,7 +21,12 @@
 				  	<a class="header" href="<?php echo base_url() . 'index.php/produit/details/' . $product->id; ?>"><?php echo ucfirst($product->denomination); ?></a>
 				  </div>
 				  <div class="image">
-				    <img src="http://placehold.it/500x400">
+				    <?php 
+						if($product->image != null)
+							echo '<img src="'.base_url().'/assets/images/'.$product->image.'"/>';
+						else
+							echo '<img src="http://placehold.it/500x400"/>';
+				  	?>
 				  </div>
 				  <div class="description">
 				    <p>Origine : <?php echo ucfirst($product->origine); ?></p>

@@ -1,3 +1,20 @@
+<?php if($this->session->flashdata('edit-category-error')){ ?>
+
+	<div class="ui grid negative message">
+	  <i class="close icon"></i>
+	  <p><?php echo $this->session->flashdata('edit-category-error'); ?></p>
+	</div>
+
+<?php } 
+	if($this->session->flashdata('edit-category-success')){ ?>
+
+	<div class="ui grid positive message">
+	  <i class="close icon"></i>
+	  <p><?php echo $this->session->flashdata('edit-category-success'); ?></p>
+	</div>
+
+<?php }?>
+
 <div class="ui four column centered grid">
 	<?php foreach($families as $family):?>
 		<div class="column">
@@ -23,6 +40,7 @@
 	<div class="ui grid">
 		<h1 class="ui header">Les catégories de <?php echo strtolower($family->denomination); ?> </h1>
 	</div>
+
 	<table id="example" class="ui celled table dataTable" cellspacing="0" width="100%">
 	    <thead>
 	        <tr>
