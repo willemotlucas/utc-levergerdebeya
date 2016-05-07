@@ -72,6 +72,7 @@
 
 
 	<div class="three wide column">
+		<h4 class="ui dividing header">Dans la même catégorie</h4>
 		<?php foreach($product_categories->result() as $pcs):?>
 			<div class="segment">
 				<div class="ui card">
@@ -80,8 +81,8 @@
 				  </div>
 				  <div class="image">
 				    <?php 
-						if($product->image != null)
-							echo '<img src="'.base_url().'/assets/images/'.$product->image.'"/>';
+						if($pcs->image != null)
+							echo '<img src="'.base_url().'/assets/images/'.$pcs->image.'"/>';
 						else
 							echo '<img src="http://placehold.it/500x400"/>';
 				  	?>
