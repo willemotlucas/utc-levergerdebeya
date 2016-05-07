@@ -17,10 +17,21 @@ class Produit extends CI_Controller
         }
 
         $this->load->library('layout');
+        $this->layout->add_js('produit');
 
         //Add the menu and load needed data
         $this->layout->include_public_menu();
         $data_menu['familles'] = Model\Famille::all();
+
+        $where = "categorie_id=".$data['product']->categorie()->id." and id!=".$id;
+
+        $data['product_categories'] = $this->db->select('*')
+                                               ->from('produit')
+                                               ->where($where)
+                                               ->limit(2)
+                                               ->get();
+
+        //$data['product_categories'] = Model\Produit::limit(2)->find_by_categorie_id($data['product']->categorie()->id);
 
         $this->layout->views('layout/menu_public', $data_menu)
         ->view('../views/products/view_details_product', $data);
