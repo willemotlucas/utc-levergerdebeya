@@ -39,4 +39,35 @@ class Categorie extends CI_Controller
         $this->layout->views('layout/menu_public', $data_menu)
         ->view('../views/categories/view_details_category', $data);
     }
+
+    public function admin_edit(){
+        $method = $this->input->method(TRUE);
+        $this->load->library('layout');
+
+        if($method == "GET")
+        {
+            //Method GET allow us to retrieve edition form with ajax request
+            $category_id = $this->input->get('id', TRUE);
+            $data['get_category'] = Model\Categorie::find($category_id);
+            $output = $this->load->view("../views/categories/form_edit_category", $data, true);
+
+            //Return html corresponding to the form
+            echo $output;
+        }
+        else if($method == "POST")
+        {
+            $category_name = $this->input->post('category_name', TRUE);
+            $category_id = $this->input->post('category_id', TRUE);
+
+            $category = Model\Categorie::find($category_id);
+
+            if(!is_null($category)){
+                $category->denomination = $category_name;
+
+                if($category->save()){
+                    echo "id : " . $category_id . " name : " . $category_name;
+                }
+            }
+        }
+    }
 }

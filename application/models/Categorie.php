@@ -17,10 +17,10 @@ class Categorie extends ORM {
 	                'products'  => ORM::has_many('\\Model\\Produit')
 	        );
 
-                self::$fields = array(
-                        'id'                    =>              ORM::field('int[11]'),
-                        'denomination'          =>              ORM::field('char[50]', array('required', 'max_length[50]'))
-                );
+            self::$fields = array(
+                    'id'                    =>              ORM::field('int[11]'),
+                    'denomination'          =>              ORM::field('char[50]', array('required', 'max_length[50]'))
+            );
         }
 
         function count_products(){

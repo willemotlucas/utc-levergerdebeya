@@ -1,7 +1,7 @@
 <div class="ui centered grid">
   <div class="center aligned column">
     <div class="ui menu">
-      <a class="item">Gestion des produits</a>
+      <a href="<?php base_url() . 'index.php/admin' ?>" class="item">Gestion des produits</a>
       <a class="item">Gestion des utilisateurs</a>
 
         <div class="right menu">

@@ -28,7 +28,7 @@
 	        <tr>
 	            <th>Nom</th>
 	            <th>Nombre de <?php echo strtolower($family->denomination); ?></th>
-	            <th>Voir tous les <?php echo strtolower($family->denomination); ?></th>
+	            <th>Voir tous les <?php echo strtolower($family->denomination); ?> de la catégorie</th>
 	            <th>Modifier</th>
 	            <th>Supprimer</th>
 	        </tr>
@@ -39,7 +39,7 @@
 	            <td><?php echo $category->denomination; ?></td>
 	            <td><?php echo $category->count_products(); ?></td>
 	            <td>Voir</td>
-	            <td>Modifier</td>
+	            <td><a id="<?php echo $category->id ?>" class="edit-button">Modifier</a></td>
 	            <td>Supprimer</td>
 	        </tr>
 	        <?php endforeach; ?>
