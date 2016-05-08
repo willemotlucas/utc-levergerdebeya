@@ -2,7 +2,7 @@
 
 	<div class="ui grid negative message">
 	  <i class="close icon"></i>
-	  <p><?php echo $this->session->flashdata('edit-category-error'); ?></p>
+	  <p><?php echo $this->session->flashdata('message-error'); ?></p>
 	</div>
 
 <?php } 
@@ -10,7 +10,7 @@
 
 	<div class="ui grid positive message">
 	  <i class="close icon"></i>
-	  <p><?php echo $this->session->flashdata('edit-category-success'); ?></p>
+	  <p><?php echo $this->session->flashdata('message-success'); ?></p>
 	</div>
 
 <?php }?>
@@ -24,7 +24,12 @@
 				  	<a class="header" href="<?php echo base_url() . 'index.php/famille/admin_details/' . $family->id; ?>">Voir tous les <?php echo strtolower($family->denomination); ?></a>
 				  </div>
 				  <div class="image">
-				    <img src="http://placehold.it/350x200">
+				    <?php 
+				      if($family->image != null)
+				        echo '<img src="'.base_url().'/assets/images/'.$family->image.'"/>';
+				      else
+				        echo '<img src="http://placehold.it/500x400"/>';
+				    ?>
 				  </div>
 				  <div class="extra content center aligned">
 				    <button class="ui custom-green button">Ajouter un produit</button>
@@ -38,7 +43,10 @@
 <?php foreach($families as $family):?>
 
 	<div class="ui grid">
-		<h1 class="ui header">Les catégories de <?php echo strtolower($family->denomination); ?> </h1>
+		<h1 class="ui header">
+			Les catégories de <?php echo strtolower($family->denomination); ?>
+			<div class="sub header right floated"><a id="<?php echo $family->id; ?>" class="add-category-button">Ajouter une catégorie</a></div>
+		</h1>
 	</div>
 
 	<table id="example" class="ui celled table dataTable" cellspacing="0" width="100%">
@@ -57,7 +65,7 @@
 	            <td><?php echo $category->denomination; ?></td>
 	            <td><?php echo $category->count_products(); ?></td>
 	            <td>Voir</td>
-	            <td><a id="<?php echo $category->id ?>" class="edit-button">Modifier</a></td>
+	            <td><a id="<?php echo $category->id ?>" class="edit-category-button">Modifier</a></td>
 	            <td>Supprimer</td>
 	        </tr>
 	        <?php endforeach; ?>

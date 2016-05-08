@@ -1,19 +1,13 @@
 <div class="ui modal">
   <i class="close icon"></i>
   <div class="header">
-    Modification de la catégorie <?php echo $get_category->denomination; ?>
+    Ajout d'une catégorie
   </div>
 
   <div class="image content">
 
     <div class="ui medium image">
-      <?php 
-      if($get_category->image != null)
-        echo '<img src="'.base_url().'/assets/images/'.$get_category->image.'"/>';
-      else
-        echo '<img src="http://placehold.it/500x400"/>';
-      ?>
-
+      <img src="http://placehold.it/500x400"/>
       <a>Modifier l'image</a>
     </div>
     
@@ -22,21 +16,16 @@
         <div class="field">
           <label>Nom de la catégorie</label>
           <div class="ui input">
-            <input id="category_id" type="hidden" value="<?php echo $get_category->id; ?>">
-            <input id="category_name" name="category_name" type="text" placeholder="Nom de la catégorie" value="<?php echo $get_category->denomination; ?>" maxlength="50">
+            <input id="category_name" name="category_name" type="text" placeholder="Nom de la catégorie" maxlength="50">
           </div>
         </div>
 
         <div class="field">
           <label>Famille</label>
           <select id="family_id" class="ui dropdown" name="dropdown">
-            <?php foreach ($get_families as $family){
-              if($family->id == $get_category->famille_id)
-              echo "<option value=" . $family->id . " selected>" . $family->denomination . "</option>";
-              else
-              echo "<option value=" . $family->id . ">" . $family->denomination . "</option>";
-            } 
-            ?>
+            <?php foreach ($get_families as $family):?>
+              <option value="<?php echo $family->id; ?>"><?php echo $family->denomination;?></option>
+            <?php endforeach; ?>
           </select>
         </div>
 

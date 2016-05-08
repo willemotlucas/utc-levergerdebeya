@@ -49,6 +49,8 @@ class Categorie extends CI_Controller
             //Method GET allow us to retrieve edition form with ajax request
             $category_id = $this->input->get('id', TRUE);
             $data['get_category'] = Model\Categorie::find($category_id);
+            $data['get_families'] = Model\Famille::all();
+
             $output = $this->load->view("../views/categories/form_edit_category", $data, true);
 
             //Return html corresponding to the form
@@ -60,22 +62,70 @@ class Categorie extends CI_Controller
         {
             $category_name = $this->input->post('category_name', TRUE);
             $category_id = $this->input->post('category_id', TRUE);
+            $family_id = $this->input->post('family_id', TRUE);
 
             $category = Model\Categorie::find($category_id);
+            $family = Model\Famille::find($family_id);
 
-            if(!is_null($category)){                
+            if(!is_null($category) && !is_null($family)){                
                 $this->load->helper(array('form', 'url'));
                 $this->load->library('form_validation');
                 $this->load->library('session'); 
 
                 $this->form_validation->set_rules('category_name', 'Nom de la catégorie', 'required|max_length[50]');
+                $this->form_validation->set_rules('family_id', 'Famille de la catégorie', 'required');
                 
                 if($this->form_validation->run() == false){
-                    $this->session->set_flashdata('edit-category-error','Une erreur est survenue ...'); 
+                    $this->session->set_flashdata('message-error','Une erreur est survenue ...'); 
                 }else{
                     $category->denomination = $category_name;
+                    $category->famille_id = $family_id;
                     $category->save();
-                    $this->session->set_flashdata('edit-category-success','La catégorie a bien été modifée.');
+                    $this->session->set_flashdata('message-success','La catégorie a bien été modifée.');
+                }
+            }
+        }
+    }
+
+    public function admin_add(){
+        $method = $this->input->method(TRUE);
+        $this->load->library('layout');
+
+        if($method == "GET")
+        {
+            //Method GET allow us to retrieve edition form with ajax request
+            $data['get_families'] = Model\Famille::all();
+            $output = $this->load->view("../views/categories/form_add_category", $data, true);
+
+            //Return html corresponding to the form
+            echo $output;
+        }
+
+
+        else if($method == "POST")
+        {
+            $category_name = $this->input->post('category_name', TRUE);
+            $category_id = $this->input->post('category_id', TRUE);
+            $family_id = $this->input->post('family_id', TRUE);
+
+            $family = Model\Famille::find($family_id);
+
+            if(!is_null($family)){                
+                $this->load->helper(array('form', 'url'));
+                $this->load->library('form_validation');
+                $this->load->library('session'); 
+
+                $this->form_validation->set_rules('category_name', 'Nom de la catégorie', 'required|max_length[50]');
+                $this->form_validation->set_rules('family_id', 'Famille de la catégorie', 'required');
+                
+                if($this->form_validation->run() == false){
+                    $this->session->set_flashdata('message-error','Une erreur est survenue ...'); 
+                }else{
+                    $category = new Model\Categorie();
+                    $category->denomination = $category_name;
+                    $category->famille_id = $family_id;
+                    $category->save();
+                    $this->session->set_flashdata('message-success','La catégorie a bien été ajoutée.');
                 }
             }
         }
