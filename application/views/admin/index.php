@@ -1,4 +1,4 @@
-<?php if($this->session->flashdata('edit-category-error')){ ?>
+<?php if($this->session->flashdata('message-error')){ ?>
 
 	<div class="ui grid negative message">
 	  <i class="close icon"></i>
@@ -6,7 +6,7 @@
 	</div>
 
 <?php } 
-	if($this->session->flashdata('edit-category-success')){ ?>
+	if($this->session->flashdata('message-success')){ ?>
 
 	<div class="ui grid positive message">
 	  <i class="close icon"></i>
@@ -66,7 +66,7 @@
 	            <td><?php echo $category->count_products(); ?></td>
 	            <td>Voir</td>
 	            <td><a id="<?php echo $category->id ?>" class="edit-category-button">Modifier</a></td>
-	            <td>Supprimer</td>
+	            <td><a id="<?php echo $category->id ?>" class="delete-category-button">Supprimer</a></td>
 	        </tr>
 	        <?php endforeach; ?>
 	    </tbody>

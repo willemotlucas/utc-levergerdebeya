@@ -130,4 +130,42 @@ class Categorie extends CI_Controller
             }
         }
     }
+
+    public function admin_delete(){
+        $method = $this->input->method(TRUE);
+        $this->load->library('layout');
+
+        if($method == "GET")
+        {
+            //Method GET allow us to retrieve edition form with ajax request
+            $category_id = $this->input->get('id', TRUE);
+            $data['get_category'] = Model\Categorie::find($category_id);
+
+            $output = $this->load->view("../views/categories/form_delete_category", $data, true);
+
+            //Return html corresponding to the form
+            echo $output;
+        }
+
+
+        else if($method == "POST")
+        {
+            $category_id = $this->input->post('category_id', TRUE);
+
+            $category = Model\Categorie::find($category_id);
+
+            if(!is_null($category)){                
+                $this->load->helper(array('url'));
+                $this->load->library('session'); 
+
+                foreach ($category->products as $product) {
+                    Model\Produit::delete($product->id);
+                }
+                
+                $category->delete();
+                $this->session->set_flashdata('message-success','La catégorie a bien été supprimée.');
+            }
+        }
+    }
+
 }

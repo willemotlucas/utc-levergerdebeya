@@ -1,7 +1,7 @@
 <div class="ui modal">
   <i class="close icon"></i>
   <div class="header">
-    Modification de la catégorie <?php echo $get_category->denomination; ?>
+    Modification de la catégorie : <?php echo $get_category->denomination; ?>
   </div>
 
   <div class="image content">
