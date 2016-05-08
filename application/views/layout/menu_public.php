@@ -26,14 +26,39 @@
             <i class="search link icon"></i>
           </div>
         </div>
-        <a id="login" class="item">
-          <i class="user icon"></i>
-          Espace utilisateur
-        </a>
+        <?php if($this->session->has_userdata('userLogged')){ ?>
+          <div class="ui pointing dropdown link item">
+            <i id="userIcon" class="user icon"></i>
+            <span class="text"><?php echo ucfirst($this->session->userLogged->prenom)." ".ucfirst($this->session->userLogged->nom);?></span>
+            <div class="menu">
+              <div class="item"><a href="<?php echo(base_url('index.php/Utilisateur/showAccount')); ?>">Voir mon compte</a></div>
+              <div id="disconnect" class="item"><a href="<?php echo(base_url('index.php/Utilisateur/disconnect/' . uri_string())); ?>">Déconnexion</a></div>
+            </div>
+          </div>
+        <?php }else{?>
+          <a id="login" class="item">
+            <i class="user icon"></i>
+            Espace utilisateur
+          </a>
+        <?php };?>
       </div>
     </div>
   </div>
 </div>
+
+<?php if($this->session->flashdata('message-success')){ ?>
+
+  <div class="ui grid positive message">
+    <p><?php echo $this->session->flashdata('message-success'); ?></p>
+  </div>
+<?php }?>
+
+<?php if($this->session->flashdata('message-error')){ ?>
+
+  <div class="ui grid negative message">
+    <p><?php echo $this->session->flashdata('message-error'); ?></p>
+  </div>
+<?php }?>
 
 <div class="ui modal">
   <i class="close icon"></i>
@@ -77,7 +102,7 @@
         <h3>Vous possédez déjà un compte ? <br/> Connectez-vous !</h3>
 
         <?php echo validation_errors(); ?>
-        <?php echo form_open('utilisateur/login'); ?>
+        <?php echo form_open('utilisateur/login/'); ?>
         <div class="ui form">
           <div class="field">
             <label>Adresse e-mail</label>
@@ -93,7 +118,8 @@
               <i class="lock icon"></i>
             </div>
           </div>
-          <button type="submit" class="ui custom-green submit button">Se connecter</button>
+          <input type="hidden" name="currentUrl" value="<?php echo uri_string(); ?>" />
+          <button id="button-connect" type="submit" class="ui custom-green submit button">Se connecter</button>
         </div>
       </div>
     </div>

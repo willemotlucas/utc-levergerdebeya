@@ -19,3 +19,17 @@
     </div>
   </div>
 </div>
+
+<?php if($this->session->flashdata('message-success')){ ?>
+
+  <div class="ui grid positive message">
+    <p><?php echo $this->session->flashdata('message-success'); ?></p>
+  </div>
+<?php }?>
+
+<?php if($this->session->flashdata('message-error')){ ?>
+
+  <div class="ui grid negative message">
+    <p><?php echo $this->session->flashdata('message-error'); ?></p>
+  </div>
+<?php }?>

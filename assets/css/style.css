@@ -23,7 +23,7 @@ div.breadcrumb {
 	margin-bottom: 2% !important;
 }
 
-h1.header , h4.header{
+h1.header , h3.header, h4.header{
 	margin-top: 2% !important;
 	margin-bottom: 2% !important;
 	color: #9DAB46 !important;
