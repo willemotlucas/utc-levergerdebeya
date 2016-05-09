@@ -55,8 +55,7 @@ $(document).ready(function() {
 		    	var data;
 		    	if(url == 'famille/admin_edit'){
 		    		var data = {
-			        	"category_name": $('#category_name').val(),
-			        	"category_id": $('#category_id').val(),
+			        	"family_name": $('#family_name').val(),
 			        	"family_id": $('#family_id').val()
 			        };
 		    	}else if(url == 'famille/admin_add'){
