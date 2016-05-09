@@ -7,7 +7,7 @@ class Admin extends CI_Controller {
 	{
 		//TODO: Check if the current user is an administrator
 		$this->load->library('layout');
-		$this->load->library('session'); 
+		$this->load->library('session');
 
         //Add the menu and load needed data
 		$this->layout->include_admin_menu();
@@ -20,7 +20,9 @@ class Admin extends CI_Controller {
 		$this->layout->add_js('semantic.dataTables');
 		$this->layout->add_js('admin');
 		$this->layout->add_js('form_add_edit_category');
+		$this->layout->add_js('form_add_edit_family');
 		$this->layout->add_js('delete_category');
+		$this->layout->add_js('delete_family');
 
 		$data['families'] = Model\Famille::all();
 		

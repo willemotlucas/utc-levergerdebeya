@@ -1,19 +1,4 @@
-<?php if($this->session->flashdata('message-error')){ ?>
-
-	<div class="ui grid negative message">
-	  <i class="close icon"></i>
-	  <p><?php echo $this->session->flashdata('message-error'); ?></p>
-	</div>
-
-<?php } 
-	if($this->session->flashdata('message-success')){ ?>
-
-	<div class="ui grid positive message">
-	  <i class="close icon"></i>
-	  <p><?php echo $this->session->flashdata('message-success'); ?></p>
-	</div>
-
-<?php }?>
+<!-- Products -->
 
 <div class="ui four column centered grid">
 	<?php foreach($families as $family):?>
@@ -40,12 +25,42 @@
 	<?php endforeach; ?>
 </div>
 
+<!-- List of families -->
+
+<div class="ui grid">
+	<h1 class="ui header">
+		Liste des familles de produits
+		<div class="sub header right floated"><a class="add-family-button">Ajouter une famille</a></div>
+	</h1>
+</div>
+
+<table id="example" class="ui celled table dataTable" cellspacing="0" width="100%">
+    <thead>
+        <tr>
+            <th>Nom</th>
+            <th>Modifier</th>
+            <th>Supprimer</th>
+        </tr>
+    </thead>
+    <tbody>
+    	<?php foreach($families as $family):?>
+        <tr>
+            <td><?php echo $family->denomination; ?></td>
+            <td><a id="<?php echo $family->id ?>" class="edit-family-button">Modifier</a></td>
+            <td><a id="<?php echo $family->id ?>" class="delete-family-button">Supprimer</a></td>
+        </tr>
+        <?php endforeach; ?>
+    </tbody>
+</table>
+
+<!-- List of categories -->
+
 <?php foreach($families as $family):?>
 
 	<div class="ui grid">
 		<h1 class="ui header">
 			Les catégories de <?php echo strtolower($family->denomination); ?>
-			<div class="sub header right floated"><a id="<?php echo $family->id; ?>" class="add-category-button">Ajouter une catégorie</a></div>
+			<div class="sub header right floated"><a class="add-category-button">Ajouter une catégorie</a></div>
 		</h1>
 	</div>
 

@@ -1,37 +1,39 @@
 $(document).ready(function() {
-    $(document).on("click",".edit-category-button",function(event){
+    $(document).on("click",".edit-family-button",function(event){
     	//Send get request to retrieve editio form
-    	sendGET("categorie/admin_edit", event.target.id);
+    	sendGET("famille/admin_edit", event.target.id);
 	});
 
-    $(document).on("click",".add-category-button",function(event){
+    $(document).on("click",".add-family-button",function(event){
     	//Send get request to retrieve editio form
-    	sendGET('categorie/admin_add', event.target.id);
+    	sendGET('famille/admin_add');
 	});
 
 	//Show a modal by adding html form and presenting as a modal
     var showEditionFormInModal = function(data){
         document.body.innerHTML += data;
         $('.ui.modal').modal('show');
-        validateForm("categorie/admin_edit");
+        validateForm("famille/admin_edit");
     };
 
     var showAddFormInModal = function(data){
         document.body.innerHTML += data;
         $('.ui.modal').modal('show');
-        validateForm("categorie/admin_add");
+        validateForm("famille/admin_add");
     };
 
     var sendGET = function(url, param){
-    	if(param == undefined)
-    		param = "";
+    	var dest = base_url + "index.php/" + url;
+
+    	if(param != undefined)
+    		 dest += "?id=" + param;
     	$.ajax({
             type: "GET",
-            url: base_url + "index.php/" + url + "?id=" + param,
+            url: dest,
             success: function(data){
-            	if(url == "categorie/admin_add")
+            	if(url == "famille/admin_add")
             		showAddFormInModal(data);
-            	else if(url == "categorie/admin_edit")
+            	else if(url == "famille/admin_edit")
             		showEditionFormInModal(data);
             }
         });
@@ -46,21 +48,20 @@ $(document).ready(function() {
     };
 
     var validateForm = function(url){
-        $('.ui.form.category').form({
+        $('.ui.form.family').form({
 		    on: 'blur',
 		    onSuccess: function(event, fields){
 		    	//Retrieve data
 		    	var data;
-		    	if(url == 'categorie/admin_edit'){
+		    	if(url == 'famille/admin_edit'){
 		    		var data = {
 			        	"category_name": $('#category_name').val(),
 			        	"category_id": $('#category_id').val(),
 			        	"family_id": $('#family_id').val()
 			        };
-		    	}else if(url == 'categorie/admin_add'){
+		    	}else if(url == 'famille/admin_add'){
 		    		var data = {
-			        	"category_name": $('#category_name').val(),
-			        	"family_id": $('#family_id').val()
+			        	"family_name": $('#family_name').val()
 			        };
 		    	}
 
@@ -69,26 +70,17 @@ $(document).ready(function() {
 		    },
 		    fields: {
 		      category_name: {
-		        identifier : 'category_name',
+		        identifier : 'family_name',
 		        rules: [
 		          {
 		            type : 'empty',
-		            prompt : 'Veuillez entrer le nom de la catégorie.'
+		            prompt : 'Veuillez entrer le nom de la famille.'
 		          },
 		          {
 		          	type : 'maxLength[50]',
-		          	prompt: 'Le nom de la catégorie ne doit pas excéder {ruleValue} caractères.'
+		          	prompt: 'Le nom de la famille ne doit pas excéder {ruleValue} caractères.'
 		          }
 		        ]
-		      },
-		      family_id: {
-		      	identifier: 'family_id',
-		      	rules: [
-		      		{
-		      			type: 'empty',
-		      			prompt: 'Veuillez choisir une famille.'
-		      		}
-		      	]
 		      }
 		    }		
 		});

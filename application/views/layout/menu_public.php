@@ -8,7 +8,7 @@
             <div class="menu">
               <div class="header"><a href="<?php echo(base_url('index.php/famille/details/' . $famille->id)); ?>">Catégories</a></div>
               <?php foreach($famille->categories() as $category):?>
-                <div class="item"><a href="<?php echo(base_url('index.php/categorie/details/' . $category->id)); ?>"><?php echo $category->denomination ?></a></div>
+                <a class="item" href="<?php echo(base_url('index.php/categorie/details/' . $category->id)); ?>"><?php echo $category->denomination ?></a>
             <?php endforeach; ?>  
             </div>
           </div>

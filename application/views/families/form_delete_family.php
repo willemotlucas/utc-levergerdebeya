@@ -1,15 +1,15 @@
 <div class="ui modal">
   <i class="close icon"></i>
   <div class="header">
-    Suppression de la catégorie : <?php echo $get_category->denomination; ?>
+    Suppression de la famille : <?php echo $get_family->denomination; ?>
   </div>
 
   <div class="image content">
     
     <div class="description">
       <form class="ui form category">
-        <input type="hidden" id="category_id" value="<?php echo $get_category->id; ?>"/>
-        <h3>Êtes-vous certain de vouloir supprimer la catégorie : "<?php echo $get_category->denomination; ?>" ?</h3>
+        <input type="hidden" id="family_id" value="<?php echo $get_family->id; ?>"/>
+        <h3>Êtes-vous certain de vouloir supprimer la famille : "<?php echo $get_family->denomination; ?>" ?</h3>
       </form>
     </div>
   </div>
