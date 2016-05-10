@@ -11,10 +11,21 @@
             <i class="search link icon"></i>
           </div>
         </div>
-        <a id="login" class="item">
-          <i class="user icon"></i>
-          Espace utilisateur
-        </a>
+       <?php if($this->session->has_userdata('userLogged')){ ?>
+          <div class="ui pointing dropdown link item">
+            <i id="userIcon" class="user icon"></i>
+            <span class="text"><?php echo ucfirst($this->session->userLogged->prenom)." ".ucfirst($this->session->userLogged->nom);?></span>
+            <div class="menu">
+              <a class="item" href="<?php echo(base_url('index.php/Utilisateur/showAccount')); ?>">Voir mon compte</a>
+              <a id="disconnect" class="item" href="<?php echo(base_url('index.php/Utilisateur/disconnect/' . uri_string())); ?>">Déconnexion</a>
+            </div>
+          </div>
+        <?php }else{?>
+          <a id="login" class="item">
+            <i class="user icon"></i>
+            Espace utilisateur
+          </a>
+        <?php };?>
       </div>
     </div>
   </div>
