@@ -9,11 +9,12 @@
     </head>
 
     <body>
-        <?php echo $output; ?>
-
-        <?php foreach($js as $url): ?>
-        	<script type="text/javascript" src="<?php echo $url; ?>"></script> 
-		<?php endforeach; ?>
+        <div class="container">
+            <?php echo $output; ?>
+        <div>
+            <?php foreach($js as $url): ?>
+            	<script type="text/javascript" src="<?php echo $url; ?>"></script> 
+    		<?php endforeach; ?>
     </body>
 
 </html>

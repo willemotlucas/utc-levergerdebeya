@@ -36,8 +36,7 @@ class Categorie extends CI_Controller
         //Retrieve all the products
         $data['products'] = $data['category']->products();
 
-        $this->layout->views('layout/menu_public', $data_menu)
-        ->view('../views/categories/view_details_category', $data);
+        $this->layout->views('layout/menu_public', $data_menu)->view('../views/categories/view_details_category', $data);
     }
 
     public function admin_edit(){
