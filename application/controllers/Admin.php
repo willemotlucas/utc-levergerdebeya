@@ -14,6 +14,7 @@ class Admin extends CI_Controller {
 
 		//Add required css
 		$this->layout->add_css('dataTables');
+		$this->layout->add_css('style');
 
 		//Add required js
 		$this->layout->add_js('jquery.dataTables');

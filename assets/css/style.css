@@ -5,9 +5,21 @@
  *
  * ---------------------
 */
-.ui.grid {
-	margin-left: 15%;
-	margin-right: 15%;
+.container {
+  margin-left: 15%; 
+  margin-right: 15%;
+  background-color: white;
+  height: 105%;
+}
+
+.content-container {
+  padding-left: 2%;
+  padding-right: 2%;
+  background-color: white;
+}
+
+body {
+  background-image: url('../images/bg.jpg');
 }
 
 /*
