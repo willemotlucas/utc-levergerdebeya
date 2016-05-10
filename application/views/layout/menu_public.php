@@ -67,7 +67,7 @@
       <div class="column">
         <h3>Vous n'avez pas encore de compte ? <br/> Inscrivez-vous, c'est gratuit !</h3>
         
-        <form class="ui form signup">
+        <form id="formSignup" class="ui form signup" action="<?php echo base_url().'index.php/Utilisateur/signup'?>" method="POST">
           <div>
             <div class="field">
               <label>Adresse e-mail</label>
@@ -91,6 +91,7 @@
               </div>
             </div>
             <div class="ui error message"></div>
+            <input type="hidden" name="currentUrl" value="<?php echo uri_string(); ?>" />
             <button id="button-signup" type="submit" class="ui custom-green submit button">S'inscrire</button>
           </div>
         </form>
