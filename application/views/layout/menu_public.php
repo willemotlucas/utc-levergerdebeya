@@ -65,9 +65,17 @@
   <div class="content">
     <div class="ui two column very relaxed stackable grid">
       <div class="column">
-        <h3>Vous n'avez pas encore de compte ? <br/> Inscrivez-vous, c'est gratuit !</h3>
-        
-        <form id="formSignup" class="ui form signup" action="<?php echo base_url().'index.php/Utilisateur/signup'?>" method="POST">
+        <div class="ui one column centered grid">
+          <div class="column">
+            <h3>Vous n'avez pas encore de compte ? <br/> Inscrivez-vous, c'est gratuit !</h3>
+            <a class="container" href="<?php echo base_url().'index.php/Utilisateur/signup';?>">
+              <button class="massive custom-green ui button">
+                Créer un compte
+              </button>
+            </a>
+          </div>
+        </div>
+        <!--<form id="formSignup" class="ui form signup" action="<?php echo base_url().'index.php/Utilisateur/signup'?>" method="POST">
           <div>
             <div class="field">
               <label>Adresse e-mail</label>
@@ -94,7 +102,7 @@
             <input type="hidden" name="currentUrl" value="<?php echo uri_string(); ?>" />
             <button id="button-signup" type="submit" class="ui custom-green submit button">S'inscrire</button>
           </div>
-        </form>
+        </form>-->
       </div>
       <div class="ui vertical divider">
         OU

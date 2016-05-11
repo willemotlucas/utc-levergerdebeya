@@ -51,7 +51,57 @@ class Utilisateur extends CI_Controller
         $this->load->helper(array('form', 'url'));
         $this->load->library('form_validation');
 
-        if($method == "POST")
+        if($this->session->has_userdata('userLogged'))
+        {
+            $this->session->set_flashdata("message-error", "Vous avez déjà un compte...");
+            redirect('Utilisateur/showAccount');
+        }
+        else
+        {
+            $this->form_validation->set_rules('nom_create', 'Nom', 'required');
+            $this->form_validation->set_rules('prenom_create', 'Prenom', 'required');
+            $this->form_validation->set_rules('mail_create', 'Email', 'required|is_unique[utilisateur.email]|valid_email', array('is_unique' => "L'adresse email entrée est déjà utilisée. Veuillez en choisir une autre."));
+            $this->form_validation->set_rules('password_create', 'Mot de passe', 'required|min_length[8]');
+            $this->form_validation->set_rules('password_confirm', 'Confirmation de mot de passe', 'required|matches[password_create]');
+
+            $this->form_validation->set_error_delimiters('<div class="ui error message">', '</div>');
+
+            if ($this->form_validation->run() == FALSE)
+            {
+                    $this->layout->include_public_menu();
+                    $data_menu['familles'] = Model\Famille::all();
+
+                    $this->layout->add_js('create_user_form');
+
+                    $this->layout->views('layout/menu_public', $data_menu)
+                                ->view('../views/users/view_create_user');
+            }
+            else
+            {
+                    $newUser = new Model\Utilisateur();
+
+                    $newUser->nom = $this->input->post('nom_create', TRUE);
+                    $newUser->prenom = $this->input->post('prenom_create', TRUE);
+                    $newUser->email = $this->input->post('mail_create', TRUE);
+                    $newUser->password = $this->input->post('password_create', TRUE);
+                    $newUser->date_naissance = $this->input->post('birth_create', TRUE);
+                    $newUser->tel_portable = $this->input->post('cell_create', TRUE);
+                    $newUser->tel_domicile = $this->input->post('phone_create', TRUE);
+                    $newUser->adresse = $this->input->post('adresse_create', TRUE);
+                    $newUser->compl_adresse = $this->input->post('compl_adresse', TRUE);
+                    $newUser->code_postal = $this->input->post('postal_create', TRUE);
+                    $newUser->ville = $this->input->post('ville_create', TRUE);
+                    $newUser->date_creation = date_default_timezone_get();
+                    $newUser->type="normalUser";
+                    $newUser->save();
+
+                    $this->session->set_userdata("userLogged", $newUser);
+                    redirect('Utilisateur/showAccount');
+            }
+        }
+        
+
+        /*if($method == "POST")
         {
             $email_signup = $this->input->post('email_signup', TRUE);
             $password_signup = $this->input->post('password_signup', TRUE);
@@ -90,7 +140,7 @@ class Utilisateur extends CI_Controller
         else
         {
             redirect('Home');
-        }
+        }*/
     }
 
     public function login()
@@ -121,7 +171,14 @@ class Utilisateur extends CI_Controller
                 }
                 else
                 {
-                    redirect($_POST['currentUrl']);
+                    if(strcmp($_POST['currentUrl'], 'Utilisateur/signup')==0)
+                    {
+                        redirect('Utilisateur/showAccount');
+                    }
+                    else
+                    {
+                        redirect($_POST['currentUrl']);
+                    }
                 }   
             }
             else
