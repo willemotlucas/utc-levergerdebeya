@@ -24,20 +24,6 @@
             <div class="ui icon input">
               <input type="text" placeholder="Rechercher un produit ...">
               <i class="search link icon"></i>
-            </div>
-          </div>
-        <?php endforeach; ?>
-        <a class="item">
-          Contact
-        </a>
-        <a class="item">
-          Nos magasins
-        </a>
-        <div class="right menu">
-        <div class="item">
-          <div class="ui icon input">
-            <input type="text" placeholder="Rechercher un produit ...">
-            <i class="search link icon"></i>
           </div>
         </div>
         <?php if($this->session->has_userdata('userLogged')){ ?>
