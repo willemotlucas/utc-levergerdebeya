@@ -175,3 +175,10 @@ button.custom-green > a {
   color: #ffffff;
   text-shadow: none;
 }
+
+.help-message{
+  color:#C0C0C0;
+}
+
+a#edit-form
+{ cursor: pointer; }
