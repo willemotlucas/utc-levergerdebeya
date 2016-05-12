@@ -150,3 +150,6 @@ button.custom-green > a {
 .help-message{
   color:#C0C0C0;
 }
+
+a#edit-form
+{ cursor: pointer; }

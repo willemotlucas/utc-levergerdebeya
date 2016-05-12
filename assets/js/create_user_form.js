@@ -1,6 +1,6 @@
 $('#help_nom').mouseover(function(){
 	var element = document.getElementById("nom_message");
-	element.innerHTML = "Entrez ici votre nom usuel";
+	element.innerHTML = "Votre nom usuel";
 })
 $('#help_nom').mouseout(function(){
 	var element = document.getElementById("nom_message");
@@ -9,7 +9,7 @@ $('#help_nom').mouseout(function(){
 
 $('#help_prenom').mouseover(function(){
 	var element = document.getElementById("prenom_message");
-	element.innerHTML = "Entrez ici votre prenom usuel";
+	element.innerHTML = "Votre prenom usuel";
 })
 $('#help_prenom').mouseout(function(){
 	var element = document.getElementById("prenom_message");
@@ -18,7 +18,7 @@ $('#help_prenom').mouseout(function(){
 
 $('#help_mail').mouseover(function(){
 	var element = document.getElementById("mail_message");
-	element.innerHTML = "Entrez une adresse email valide qui vous permettra de vous authentifier au site. Aucune publicité ne sera envoyée.";
+	element.innerHTML = "Votre adresse email valide qui vous permettra de vous authentifier au site. Aucune publicité ne sera envoyée.";
 })
 $('#help_mail').mouseout(function(){
 	var element = document.getElementById("mail_message");
@@ -104,6 +104,29 @@ $('#help_ville').mouseover(function(){
 $('#help_ville').mouseout(function(){
 	var element = document.getElementById("ville_message");
 	element.innerHTML = "";
+})
+
+$('.edit_div_link').mouseover(function(){
+	$('#edit_link').css('cursor', 'pointer');
+	$('#edit_link').css('text-decoration', 'underline');
+})
+$('.edit_div_link').mouseout(function(){
+	$('#edit_link').css('cursor', 'pointer');
+	$('#edit_link').css('text-decoration', '');
+})
+$('#edit_link').click(function(){
+	var inputs = document.getElementsByTagName('input');
+	var inputsLength=inputs.length;
+	var info = document.getElementById('info_message');
+	var submitDiv = document.getElementById('submit_div')
+
+	for(var i=0; i<inputsLength; i++)
+	{
+		inputs[i].removeAttribute('readonly');
+	}
+	info.setAttribute('class', 'ui info message')
+	info.innerHTML="Vous pouvez désormais modifier les informations de votre compte."
+	submitDiv.innerHTML = '<button type="submit" id="button-edit" class="ui custom-green submit button">Modifier les données</button>';
 })
 
 $('#button-create').click(function(){

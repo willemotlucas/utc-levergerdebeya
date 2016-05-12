@@ -7,42 +7,6 @@ class Utilisateur extends CI_Controller
             parent::__construct();
     }
 
-    public function createUser()
-    {
-        $method = $this->input->method(TRUE);
-        $this->load->library('layout');
-        $this->load->helper(array('form', 'url'));
-        $this->load->library('form_validation');
-
-        if($method == 'POST')
-        {
-            $newUser = new Model\Utilisateur();
-            $password_create = $this->input->post('password_create', TRUE);
-            $password_confirm = $this->input->post('password_confirm', TRUE);
-
-            if(strcmp($password_create, $password_confirm) == 0)
-            {
-                $newUser->nom = $this->input->post('nom_create', TRUE);
-                $newUser->prenom = $this->input->post('prenom_create', TRUE);
-                $newUser->email = $this->input->post('mail_create', TRUE);
-                $newUser->password = $password_create;
-                $newUser->date_naissance = $this->input->post('birth_create', TRUE);
-                $newUser->tel_portable = $this->input->post('cell_create', TRUE);
-                $newUser->tel_domicile = $this->input->post('phone_create', TRUE);
-                $newUser->adresse = $this->input->post('adresse_create', TRUE);
-                $newUser->compl_adresse = $this->input->post('compl_adresse', TRUE);
-                $newUser->code_postal = $this->input->post('postal_create', TRUE);
-                $newUser->ville = $this->input->post('ville_create', TRUE);
-                $newUser->date_creation = date_default_timezone_get();
-                $newUser->type="normalUser";
-                $newUser->save();
-
-                $this->session->set_userdata("userLogged", $newUser);
-                redirect('Utilisateur/showAccount');
-            }
-        }
-    }
-
     public function signup()
     {
 
@@ -53,7 +17,7 @@ class Utilisateur extends CI_Controller
 
         if($this->session->has_userdata('userLogged'))
         {
-            $this->session->set_flashdata("message-error", "Vous avez déjà un compte...");
+            $this->session->set_flashdata("message-error", "Vous êtes déjà connecté au site...");
             redirect('Utilisateur/showAccount');
         }
         else
@@ -95,52 +59,10 @@ class Utilisateur extends CI_Controller
                     $newUser->type="normalUser";
                     $newUser->save();
 
-                    $this->session->set_userdata("userLogged", $newUser);
+                    $this->session->set_userdata("userLogged", Model\Utilisateur::last_created());
                     redirect('Utilisateur/showAccount');
             }
         }
-        
-
-        /*if($method == "POST")
-        {
-            $email_signup = $this->input->post('email_signup', TRUE);
-            $password_signup = $this->input->post('password_signup', TRUE);
-            $password_confirm = $this->input->post('password_confirm', TRUE);
-            $currentUrl = $this->input->post('currentUrl', TRUE);
-
-            //$family = Model\Famille::find($family_id);
-            $user = Model\Utilisateur::limit(1)->find_by_email($email_signup, FALSE);
-
-            if($user != null)
-            {
-                $this->session->set_flashdata('message-error','L\'adresse mail entrée est déjà utilisée');
-                redirect($currentUrl);
-            }
-
-            $this->form_validation->set_rules('email_signup', 'Email', 'required');
-            $this->form_validation->set_rules('password_signup', 'Mot de passe', 'required|min_length[8]'); 
-
-            if($this->form_validation->run() == false){
-                $this->session->set_flashdata('message-error','Une erreur est survenue...');
-                redirect($currentUrl);
-            }else{
-
-                //Add the menu and load needed data
-                $this->layout->include_public_menu();
-                $data_menu['familles'] = Model\Famille::all();
-
-                $data['email_signup'] = $email_signup;
-                $data['password_signup'] = $password_signup;
-                $this->layout->add_js('create_user_form');
-
-                $this->layout->views('layout/menu_public', $data_menu)
-                            ->view('../views/users/view_create_user', $data);
-            }
-        }
-        else
-        {
-            redirect('Home');
-        }*/
     }
 
     public function login()
@@ -195,31 +117,83 @@ class Utilisateur extends CI_Controller
         {
             $this->session->unset_userdata('userLogged');
             $this->session->set_flashdata('message-success','Vous vous êtes bien déconnecté. A bientôt.');
+            if(strcmp(implode('/', func_get_args()), 'Utilisateur/showAccount') == 0)
+            {
+                redirect('Home');
+            }
             redirect(implode('/', func_get_args()));
         }
-        else
-        {
-            redirect('/Home');
-        }
+        redirect('/Home');
         
     }
 
     public function showAccount()
     {
         if($this->session->has_userdata('userLogged'))
-        {
-
+        {   
+            $userLogged = $this->session->userdata('userLogged');
+            $method = $this->input->method(TRUE);
             $this->load->library('layout');
+            $this->load->helper(array('form', 'url'));
+            $this->load->library('form_validation');
 
-            //Add the menu and load needed data
-            $this->layout->include_public_menu();
-            $data_menu['familles'] = Model\Famille::all();
+            $this->form_validation->set_rules('nom_edit', 'Nom', 'required');
+            $this->form_validation->set_rules('prenom_edit', 'Prenom', 'required');
+            $this->form_validation->set_rules('mail_edit', 'Email', 'required|valid_email');
 
-            $data = $this->getUserDatas();
+            $this->form_validation->set_error_delimiters('<div class="ui error message">', '</div>');
 
+            
+            if ($this->form_validation->run() == FALSE)
+            {
+                
+                    //Add the menu and load needed data
+                    $this->layout->include_public_menu();
+                    $data_menu['familles'] = Model\Famille::all();
+                    $this->layout->add_js('create_user_form');
 
-            $this->layout->views('layout/menu_public', $data_menu)
-            ->view('../views/users/view_details_users', $data);
+                    $data = $this->getUserDatas();
+
+                    $this->layout->views('layout/menu_public', $data_menu)
+                    ->view('../views/users/view_details_users', $data);
+            }
+            else
+            {
+                $email = $this->input->post('mail_edit', TRUE);
+                $otherUser = \Model\Utilisateur::limit(1)->find_by_email($email, FALSE);
+                if($otherUser != null && $otherUser->id != $userLogged->id)
+                {
+                    $this->session->set_flashdata('message-error', 'L\'adresse email entrée est déjà utilisée....');
+                    
+                }
+                else
+                {
+                    $userLogged->nom = $this->input->post('nom_edit', TRUE);
+                    $userLogged->prenom = $this->input->post('prenom_edit', TRUE);
+                    $userLogged->email = $this->input->post('mail_edit', TRUE);
+                    $userLogged->date_naissance = $this->input->post('birth_edit', TRUE);
+                    $userLogged->tel_portable = $this->input->post('cell_edit', TRUE);
+                    $userLogged->tel_domicile = $this->input->post('phone_edit', TRUE);
+                    $userLogged->adresse = $this->input->post('adresse_edit', TRUE);
+                    $userLogged->compl_adresse = $this->input->post('compl_adresse', TRUE);
+                    $userLogged->code_postal = $this->input->post('postal_edit', TRUE);
+                    $userLogged->ville = $this->input->post('ville_edit', TRUE);
+                    $userLogged->save();
+
+                    $this->session->set_flashdata('message-success', 'Les modifications ont été prises en compte.');
+                }
+
+                //Add the menu and load needed data
+                $this->layout->include_public_menu();
+                $data_menu['familles'] = Model\Famille::all();
+                $this->layout->add_js('create_user_form');
+
+                $data = $this->getUserDatas();
+
+                $this->layout->views('layout/menu_public', $data_menu)
+                ->view('../views/users/view_details_users', $data);
+                    
+            }
         }
         else
         {
