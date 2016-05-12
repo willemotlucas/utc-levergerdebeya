@@ -53,6 +53,35 @@ div.card > div.description > p {
 	margin: 2% 0 2% 2% !important;
 }
 
+div.magasin-card {
+  width: 100% !important;
+}
+
+div.magasin-card > div.content:first-child {
+    background-color: white !important;
+}
+
+div.magasin-description {
+  display: inline-block;
+  margin-left: 1%;
+}
+
+div.magasin-description > p.description-header {
+  font-weight: bold;
+}
+
+div.magasins-images {
+  padding-top: 0px !important;
+}
+
+div.magasins-images > div.image {
+  margin-right: 2% !important;
+}
+
+.ui.cards > .card > .extra, .ui.card > .extra {
+   border-top: 0px solid !important; 
+}
+
 /*
  * ---------------------
  *

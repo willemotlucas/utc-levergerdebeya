@@ -14,4 +14,16 @@ class Home extends CI_Controller {
 		$this->layout->views('layout/menu_public', $data_menu)
 		->view('products/test_product');
 	}
+
+	public function magasins()
+	{
+		$this->load->library('layout');
+
+		$this->layout->include_public_menu();
+
+		$data_menu['familles'] = Model\Famille::all();
+
+		$this->layout->views('layout/menu_public', $data_menu)
+		->view('home/magasins');
+	}
 }

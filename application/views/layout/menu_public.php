@@ -16,7 +16,7 @@
           <a class="item">
             Contact
           </a>
-          <a class="item">
+          <a class="item" href="<?php echo(base_url('index.php/home/magasins')) ?>">
             Nos magasins
           </a>
           <div class="right menu">
