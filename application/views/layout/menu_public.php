@@ -1,29 +1,29 @@
-<div class="ui centered grid">
-  <div class="center aligned column">
-    <div class="ui menu">
-        <?php foreach($familles as $famille): ?>
-          <div class="ui pointing dropdown link item">
-            <span class="text"><?php echo $famille->denomination ?></span>
-            <i class="dropdown icon"></i>
-            <div class="menu">
-              <div class="header"><a href="<?php echo(base_url('index.php/famille/details/' . $famille->id)); ?>">Catégories</a></div>
-              <?php foreach($famille->categories() as $category):?>
-                <a class="item" href="<?php echo(base_url('index.php/categorie/details/' . $category->id)); ?>"><?php echo $category->denomination ?></a>
-            <?php endforeach; ?>  
+  <div class="ui centered grid">
+    <div class="center aligned column">
+      <div class="ui menu">
+          <?php foreach($familles as $famille): ?>
+            <div class="ui pointing dropdown link item">
+              <span class="text"><?php echo $famille->denomination ?></span>
+              <i class="dropdown icon"></i>
+              <div class="menu">
+                <div class="header"><a href="<?php echo(base_url('index.php/famille/details/' . $famille->id)); ?>">Catégories</a></div>
+                <?php foreach($famille->categories() as $category):?>
+                  <a class="item" href="<?php echo(base_url('index.php/categorie/details/' . $category->id)); ?>"><?php echo $category->denomination ?></a>
+              <?php endforeach; ?>  
+              </div>
             </div>
-          </div>
-        <?php endforeach; ?>
-        <a class="item">
-          Contact
-        </a>
-        <a class="item">
-          Nos magasins
-        </a>
-        <div class="right menu">
-        <div class="item">
-          <div class="ui icon input">
-            <input type="text" placeholder="Rechercher un produit ...">
-            <i class="search link icon"></i>
+          <?php endforeach; ?>
+          <a class="item">
+            Contact
+          </a>
+          <a class="item" href="<?php echo(base_url('index.php/home/magasins')) ?>">
+            Nos magasins
+          </a>
+          <div class="right menu">
+          <div class="item">
+            <div class="ui icon input">
+              <input type="text" placeholder="Rechercher un produit ...">
+              <i class="search link icon"></i>
           </div>
         </div>
         <?php if($this->session->has_userdata('userLogged')){ ?>

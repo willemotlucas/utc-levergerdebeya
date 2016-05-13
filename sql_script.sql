@@ -16,7 +16,7 @@ CREATE TABLE IF NOT EXISTS `utilisateur` (
   compl_adresse varchar(50),
   code_postal int(10),
   ville varchar(50),
-  date_creatrion datetime NOT NULL,
+  date_creation datetime NOT NULL,
   type ENUM('normalUser','admin') NOT NULL,
   PRIMARY KEY (id)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
