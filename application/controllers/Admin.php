@@ -5,9 +5,10 @@ class Admin extends CI_Controller {
 
 	public function index()
 	{
+		$this->session->testAdminLogged();
+
 		//TODO: Check if the current user is an administrator
 		$this->load->library('layout');
-		$this->load->library('session');
 
         //Add the menu and load needed data
 		$this->layout->include_admin_menu();
@@ -29,5 +30,6 @@ class Admin extends CI_Controller {
 		
 		$this->layout->views('layout/menu_admin')
 		->view('../views/admin/index', $data);
+		
 	}
 }

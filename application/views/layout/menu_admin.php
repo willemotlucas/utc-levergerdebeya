@@ -1,8 +1,8 @@
 <div class="ui centered grid">
   <div class="center aligned column">
     <div class="ui menu">
-      <a href="<?php base_url() . 'index.php/admin' ?>" class="item">Gestion des produits</a>
-      <a class="item">Gestion des utilisateurs</a>
+      <a href="<?php echo base_url() . 'index.php/Admin' ?>" class="item">Gestion des produits</a>
+      <a href="<?php echo base_url() . 'index.php/Utilisateur/admin_gestion' ?>"class="item">Gestion des utilisateurs</a>
 
         <div class="right menu">
         <div class="item">

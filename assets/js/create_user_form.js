@@ -133,6 +133,10 @@ $('#button-create').click(function(){
 	validateForm();
 })
 
+$('#button-edit').click(function(){
+	validateForm();
+})
+
 var validateForm = function(){
         $('.ui.form.create.user').form({
 		    on: 'blur',
@@ -187,6 +191,42 @@ var validateForm = function(){
 		      		{
 		      			type: 'match[password_create]',
 		      			prompt: 'Les mots de passe ne sont pas identiques.'
+		      		}
+		      	]
+		      }
+		    }		
+		});
+		$('.ui.form.edit.user').form({
+		    on: 'blur',
+		    fields: {
+		      nom_edit: {
+		        identifier : 'nom_edit',
+		        rules: [
+		          {
+		            type : 'empty',
+		            prompt : 'Veuillez entrer un nom.'
+		          }
+		        ]
+		      },
+		      prenom_edit: {
+		      	identifier: 'prenom_edit',
+		      	rules: [
+		      		{
+		      			type: 'empty',
+		      			prompt: 'Veuillez entrer un prénom.'
+		      		}
+		      	]
+		      },
+		      mail_edit: {
+		      	identifier: 'mail_edit',
+		      	rules: [
+		      		{
+		      			type: 'empty',
+		      			prompt: 'Veuillez entrer une adresse email.'
+		      		},
+		      		{
+		      			type: 'email',
+		      			prompt: "Veuillez entrer une adresse email valide."
 		      		}
 		      	]
 		      }

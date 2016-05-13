@@ -7,6 +7,11 @@ class Utilisateur extends CI_Controller
             parent::__construct();
     }
 
+    public function index()
+    {
+        $this->showAccount();
+    }
+
     public function signup()
     {
 
@@ -201,6 +206,83 @@ class Utilisateur extends CI_Controller
         }
     }
 
+    public function admin_gestion()
+    {
+        $this->session->testAdminLogged();
+        $data['users'] = \Model\Utilisateur::all();
+
+        $this->load->library('layout');
+
+        //Add the menu and load needed data
+        $this->layout->include_admin_menu();
+        $this->layout->add_js('jquery.dataTables');
+        $this->layout->add_js('semantic.dataTables');
+        $this->layout->add_js('admin');
+
+        $this->layout->views('layout/menu_admin')
+        ->view('../views/users/view_all_users', $data);
+    }
+
+    public function admin_showUser($id)
+    {
+        $this->session->testAdminLogged();
+        $data['userShown'] = \Model\Utilisateur::find($id);
+        if(is_null($data['userShown']))
+        {
+            show_404();
+            return;
+        }
+
+        $method = $this->input->method(TRUE);
+        $this->load->helper(array('form', 'url'));
+        $this->load->library('form_validation');
+        $this->load->library('layout');
+        //Add the menu and load needed data
+        $this->layout->include_admin_menu();
+        $this->layout->add_js('admin_edit_user_form');
+
+        $this->form_validation->set_rules('nom_edit_admin', 'Nom', 'required');
+        $this->form_validation->set_rules('prenom_edit_admin', 'Prenom', 'required');
+        $this->form_validation->set_rules('mail_edit_admin', 'Email', 'required|valid_email');
+
+        $this->form_validation->set_error_delimiters('<div class="ui error message">', '</div>');
+
+        
+        if ($this->form_validation->run() == FALSE)
+        {
+                $this->layout->views('layout/menu_admin')
+                ->view('../views/users/admin_show_user', $data);
+        }
+        else
+        {
+            $email = $this->input->post('mail_edit_admin', TRUE);
+            $otherUser = \Model\Utilisateur::limit(1)->find_by_email($email, FALSE);
+            if($otherUser != null && $otherUser->id != $data['userShown']->id)
+            {
+                $this->session->set_flashdata('message-error', 'L\'adresse email entrée est déjà utilisée....');   
+            }
+            else
+            {
+                $data['userShown']->nom = $this->input->post('nom_edit_admin', TRUE);
+                $data['userShown']->prenom = $this->input->post('prenom_edit_admin', TRUE);
+                $data['userShown']->email = $this->input->post('mail_edit_admin', TRUE);
+                $data['userShown']->date_naissance = $this->input->post('birth_edit_admin', TRUE);
+                $data['userShown']->tel_portable = $this->input->post('cell_edit_admin', TRUE);
+                $data['userShown']->tel_domicile = $this->input->post('phone_edit_admin', TRUE);
+                $data['userShown']->adresse = $this->input->post('adresse_edit_admin', TRUE);
+                $data['userShown']->compl_adresse = $this->input->post('compl_adresse_admin', TRUE);
+                $data['userShown']->code_postal = $this->input->post('postal_edit_admin', TRUE);
+                $data['userShown']->ville = $this->input->post('ville_edit_admin', TRUE);
+                $data['userShown']->save();
+
+                $this->session->set_flashdata('message-success', 'Les modifications ont été prises en compte.');
+            }
+            $this->layout->views('layout/menu_admin')
+            ->view('../views/users/admin_show_user', $data);
+        }
+    }
+
+
     private function getUserDatas()
     {
         $data['user']= $this->session->userdata('userLogged');
@@ -231,6 +313,15 @@ class Utilisateur extends CI_Controller
         else
         {
             $data['email'] = "";
+        }
+
+        if($user->date_naissance != null)
+        {
+            $data['date_naissance'] = $user->date_naissance;
+        }
+        else
+        {
+            $data['date_naissance'] = "";
         }
 
         if($user->tel_portable != null)
