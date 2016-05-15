@@ -38,7 +38,7 @@
 						            <td><?php echo $prod->prix.' €'; ?></td>
 						            <td><?php echo $prod->typeVente; ?></td>
 						            <td><a id="<?php echo $prod->id ?>" href="<?php echo base_url().'index.php/Produit/admin_details/'.$prod->id ?>" class="edit-family-button">Voir</a></td>
-						            <td><a id="<?php echo $prod->id ?>" class="delete-family-button">Supprimer</a></td>
+						            <td><a id="<?php echo $prod->id ?>" class="delete-product-button">Supprimer</a></td>
 						        </tr>
 					        <?php endforeach; ?>
 					    </tbody>

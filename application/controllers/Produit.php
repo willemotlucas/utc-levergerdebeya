@@ -233,4 +233,44 @@ class Produit extends CI_Controller
 
         }
     }
+
+    public function admin_delete(){
+
+        $method = $this->input->method(TRUE);
+        $this->load->library('layout');
+
+        if($method == "GET")
+        {
+            //Method GET allow us to retrieve edition form with ajax request
+            $productId = $this->input->get('id', TRUE);
+            $data['get_product'] = Model\Produit::find($productId);
+
+            $output = $this->load->view("../views/products/form_delete_product", $data, true);
+
+            //Return html corresponding to the form
+            echo $output;
+        }
+
+
+        else if($method == "POST")
+        {
+            $this->form_validation->set_rules('product_id', 'Id du produit', 'required');
+
+            if($this->form_validation->run() == false){
+                $this->session->set_flashdata('message-error','Une erreur est survenue ...'); 
+            }
+            else{
+                $product_id = $this->input->post('product_id', TRUE);
+
+                $product = Model\Produit::find($product_id);
+
+                if(!is_null($product)){                            
+                    $product->delete();
+                    $this->session->set_flashdata('message-success','Le produit '.$product->denomination.' a bien été supprimée.');
+                }else{
+                    $this->session->set_flashdata('message-error','Une erreur est survenue. Veuillez réessayer ultérieurement.');
+                }
+            }
+        }
+    }
 }

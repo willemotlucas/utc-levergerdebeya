@@ -5,6 +5,8 @@
 		  <div class="divider"> / </div>
 		  <a href="<?php echo base_url() . 'index.php/Famille/admin_details/'.$product->categorie()->family()->id; ?>" class="section"><?php echo ucfirst($product->categorie()->family()->denomination);?></a>
 		  <div class="divider"> / </div>
+		  <a href="<?php echo base_url() . 'index.php/Categorie/admin_show/'.$product->categorie()->id; ?>" class="section"><?php echo ucfirst($product->categorie()->denomination);?></a>
+		  <div class="divider"> / </div>
 		  <a href="<?php echo base_url() . 'index.php/Produit/admin_details/' . $product->id; ?>" class="section"><?php echo ucfirst($product->denomination);?></a>
 		</div>
 	</div>
