@@ -102,6 +102,9 @@ div.menu > div.item > span.text > a {
 	color: black !important;
 }
 
+form.search-form input{
+  width: 0% !important;
+}
 /*
  * ---------------------
  *

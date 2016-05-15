@@ -19,6 +19,17 @@ $('#button-connect').click(function(){
 	validateForm("Utilisateur/login/");
 })
 
+/*$('#search_product').click(function(){
+	console.log('search');
+	$.ajax({
+            type: "POST",
+            url: base_url + "index.php/home/search",
+            data: {
+            	'searchText': $('#search_text').val()
+            }
+        });
+})*/
+
 var validateForm = function(url){
 	if(url == 'Utilisateur/signup/'){
         $('.ui.form.signup').form({
