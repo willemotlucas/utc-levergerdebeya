@@ -80,12 +80,35 @@ class Categorie extends CI_Controller
                         if(!is_null($category) && !is_null($family)){
                             $category->denomination = $category_name;
                             $category->famille_id = $family_id;
-                            $category->save();
-                            $this->session->set_flashdata('message-success','La catégorie a bien été modifée.');
+                            
+                            if(!empty($_FILES)){
+                                $config['upload_path']          = './assets/images/';
+                                $config['allowed_types']        = 'jpg|png';
+                                $config['file_name']            = $category->id.'-'.$category->denomination.'-'.$category->family()->denomination;
+                                $config['overwrite']            = TRUE;
+
+                                $this->load->library('upload', $config);
+
+                                if (!$this->upload->do_upload('picture_create'))
+                                {
+                                    $error = $this->upload->display_errors();
+                                    $this->session->set_flashdata('message-error', $eror);
+                                }
+                                else
+                                {
+                                    $this->upload->data();
+                                    $category->image = $this->upload->data('file_name');
+                                    $category->save();
+                                    $this->session->set_flashdata('message-success','La catégorie a bien été modifiée.');
+                                }
+                            }else{
+                                $category->save();
+                                $this->session->set_flashdata('message-success','La catégorie a bien été modifiée.');
+                            }
+                                
                         }else{
                             $this->session->set_flashdata('message-error','Une erreur est survenue ...'); 
                         }
-
                     }
                 }
             }
@@ -124,14 +147,13 @@ class Categorie extends CI_Controller
                 {
                     $this->form_validation->set_rules('category_name', 'Nom de la catégorie', 'required|max_length[50]');
                     $this->form_validation->set_rules('family_id', 'Famille de la catégorie', 'required');
-                    
+
                     if($this->form_validation->run() == false){
-                        $this->session->set_flashdata('message-error','Une erreur est survenue ...'); 
+                        $this->session->set_flashdata('message-error',"Une erreur est survenue ..."); 
                     }
                     else
                     {
                         $category_name = $this->input->post('category_name', TRUE);
-                        $category_id = $this->input->post('category_id', TRUE);
                         $family_id = $this->input->post('family_id', TRUE);
 
                         $family = Model\Famille::find($family_id);
@@ -140,10 +162,32 @@ class Categorie extends CI_Controller
                             $category = new Model\Categorie();
                             $category->denomination = $category_name;
                             $category->famille_id = $family_id;
-                            $category->save();
-                            $this->session->set_flashdata('message-success','La catégorie a bien été ajoutée.');
+
+                            if($category->save()){
+                                $last_category = Model\Categorie::last_created();
+
+                                $config['upload_path']          = './assets/images/';
+                                $config['allowed_types']        = 'jpg|png';
+                                $config['file_name']            = $category->id.'-'.$category->denomination.'-'.$category->family()->denomination;
+                                $config['overwrite']            = TRUE;
+
+                                $this->load->library('upload', $config);
+
+                                if (!$this->upload->do_upload('picture_create'))
+                                {
+                                    $error = $this->upload->display_errors();
+                                    $this->session->set_flashdata('message-error', $eror);
+                                }
+                                else
+                                {
+                                    $this->upload->data();
+                                    $last_category->image = $this->upload->data('file_name');
+                                    $last_category->save();
+                                    $this->session->set_flashdata('message-success','La catégorie a bien été ajoutée.');
+                                }
+                            }
                         }else{
-                            $this->session->set_flashdata('message-error','Une erreur est survenue ...'); 
+                            $this->session->set_flashdata('message-error','2 Une erreur est survenue ...'); 
                         }
                     }
                 }

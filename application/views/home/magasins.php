@@ -18,7 +18,7 @@
 	    </div>
 	   	<div class="content">
 		    <div class="left floated image">
-		    	<img src="http://placehold.it/300x200"/>
+		    	<img class="ui medium image" src="http://placehold.it/300x200"/>
 		    </div>
 	    	<div class="description magasin-description">
 	    		<p class="description-header">Adresse :</p>
@@ -33,16 +33,18 @@
 	    		</p>
 	    	</div>
 	    </div>
-	    <div class="extra content magasins-images">
-	    	<div class="image left floated">
-		    	<img src="http://placehold.it/300x200"/>
-		    </div>
-		   	<div class="image left floated">
-		    	<img src="http://placehold.it/300x200"/>
-		    </div>
-		    <div class="image left floated">
-		    	<img src="http://placehold.it/300x200"/>
-		    </div>
+	    <div class="extra content">
+	    	<div class="ui small images">
+	    		<div class="image">
+			    	<img class="ui image" src="http://placehold.it/300x200"/>
+			    </div>
+			   	<div class="image">
+			    	<img class="ui image" src="http://placehold.it/300x200"/>
+			    </div>
+			    <div class="image">
+			    	<img class="ui image" src="http://placehold.it/300x200"/>
+			    </div>	
+	    	</div>
 	    </div>
 	  </div>
 
@@ -52,7 +54,7 @@
 	    </div>
 	   	<div class="content">
 		    <div class="left floated image">
-		    	<img src="http://placehold.it/300x200"/>
+		    	<img class="ui medium image" src="http://placehold.it/300x200"/>
 		    </div>
 	    	<div class="description magasin-description">
 	    		<p class="description-header">Adresse :</p>
@@ -68,16 +70,18 @@
 	    		</p>
 	    	</div>
 	    </div>
-	    <div class="extra content magasins-images">
-	    	<div class="image left floated">
-		    	<img src="http://placehold.it/300x200"/>
-		    </div>
-		   	<div class="image left floated">
-		    	<img src="http://placehold.it/300x200"/>
-		    </div>
-		    <div class="image left floated">
-		    	<img src="http://placehold.it/300x200"/>
-		    </div>
+	    <div class="extra content">
+	    	<div class="ui small images">
+	    		<div class="image">
+			    	<img class="ui image" src="http://placehold.it/300x200"/>
+			    </div>
+			   	<div class="image">
+			    	<img class="ui image" src="http://placehold.it/300x200"/>
+			    </div>
+			    <div class="image">
+			    	<img class="ui image" src="http://placehold.it/300x200"/>
+			    </div>	
+	    	</div>
 	    </div>
 	  </div>
 	</div>

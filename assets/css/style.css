@@ -161,6 +161,17 @@ button.custom-green > a {
  *
  * ---------------------
 */
+form.ui.form.category > div.description{
+  display: inline-block !important;
+}
+
+/*
+ * ---------------------
+ *
+ * custom green-color
+ *
+ * ---------------------
+*/
 
 .ui.custom-green.buttons .button,
 .ui.custom-green.button {

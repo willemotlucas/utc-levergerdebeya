@@ -9,6 +9,13 @@ $(document).ready(function() {
     	sendGET('categorie/admin_add', event.target.id);
 	});
 
+	var file;
+	$(document).on("change","#picture_create",function(event){
+    	//Send get request to retrieve editio form
+    	file = event.target.files[0];
+    	$('#image_preview').attr('src', window.URL.createObjectURL(file))
+	});
+
 	//Show a modal by adding html form and presenting as a modal
     var showEditionFormInModal = function(data){
         document.body.innerHTML += data;
@@ -38,11 +45,25 @@ $(document).ready(function() {
     };
 
     var sendPOST = function(url, data){
-		$.ajax({
-            type: "POST",
-            url: base_url + "index.php/" + url,
-            data: data
-        });
+		if(file !== undefined)
+		{
+	    	$.ajax({
+	            type: "POST",
+	            url: base_url + "index.php/" + url,
+	            data: data,
+	            processData: false, // Don't process the files
+	        	contentType: false,
+	        	cache: false
+	        });
+		}
+		else
+		{
+			$.ajax({
+	            type: "POST",
+	            url: base_url + "index.php/" + url,
+	            data: data
+	        });
+		}
     };
 
     var validateForm = function(url){
@@ -52,16 +73,29 @@ $(document).ready(function() {
 		    	//Retrieve data
 		    	var data;
 		    	if(url == 'categorie/admin_edit'){
-		    		var data = {
-			        	"category_name": $('#category_name').val(),
-			        	"category_id": $('#category_id').val(),
-			        	"family_id": $('#family_id').val()
-			        };
+		    		if(file != undefined){
+		    			data = new FormData($('#edit_category')[0]);
+		    			data.append('family_id', $('#family_id').val());
+		    			data.append('category_id', $('#category_id').val());
+		    		}
+		    		else{
+		    			data = {
+				        	"category_name": $('#category_name').val(),
+				        	"category_id": $('#category_id').val(),
+				        	"family_id": $('#family_id').val()
+				        };
+		    		}
 		    	}else if(url == 'categorie/admin_add'){
-		    		var data = {
-			        	"category_name": $('#category_name').val(),
-			        	"family_id": $('#family_id').val()
-			        };
+		    		if(file != undefined){
+		    			data = new FormData($('#add_category')[0]);
+		    			data.append('family_id', $('#family_id').val());
+		    		}
+		    		else{
+		    			data = {
+				        	"category_name": $('#category_name').val(),
+				        	"family_id": $('#family_id').val()
+				        };
+		    		}
 		    	}
 
 		        //Send POST request to save modifications

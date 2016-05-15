@@ -19,7 +19,8 @@ class Categorie extends ORM {
 
             self::$fields = array(
                     'id'                    =>              ORM::field('int[11]'),
-                    'denomination'          =>              ORM::field('char[50]', array('required', 'max_length[50]'))
+                    'denomination'          =>              ORM::field('char[50]', array('required', 'max_length[50]')),
+                    'image'                 =>              ORM::field('char[150]', array('max_length[150]'))
             );
         }
 

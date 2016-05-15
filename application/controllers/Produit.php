@@ -143,7 +143,7 @@ class Produit extends CI_Controller
                 $product->image = $this->upload->data('file_name');
                 $product->save();
                 $this->session->set_flashdata('message-success', 'Produit bien créé');
-                redirect('Produit/admin_details/'.$product->id);
+                redirect('Produit/admin_details/' . $product->id);
         }       
     }  
 
