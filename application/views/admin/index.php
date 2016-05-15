@@ -1,3 +1,11 @@
+<div class="content-container">
+	<div class="ui grid">
+		<div class="ui breadcrumb">
+		  <a href="<?php echo base_url() . 'index.php/Admin'; ?>" class="section">Accueil Admin - Gestion des produits</a>
+		 </div>
+	</div>
+</div>
+
 <!-- Products -->
 <div class="content-container">
 	<div class="ui four column centered grid">
@@ -17,7 +25,7 @@
 					    ?>
 					  </div>
 					  <div class="extra content center aligned">
-					    <button class="ui custom-green button">Ajouter un produit</button>
+					    <a class="ui custom-green button" href="<?php echo base_url().'index.php/Produit/admin_addProduct/'.$family->id;?>">Ajouter un produit</a>
 					  </div>
 					</div>
 				</div>
@@ -79,7 +87,7 @@
 		        <tr>
 		            <td><?php echo $category->denomination; ?></td>
 		            <td><?php echo $category->count_products(); ?></td>
-		            <td>Voir</td>
+		            <td><a id="<?php echo $category->id ?>" href="<?php echo base_url().'index.php/Categorie/admin_show/'.$category->id;?>">Voir</td>
 		            <td><a id="<?php echo $category->id ?>" class="edit-category-button">Modifier</a></td>
 		            <td><a id="<?php echo $category->id ?>" class="delete-category-button">Supprimer</a></td>
 		        </tr>

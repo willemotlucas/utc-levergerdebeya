@@ -38,7 +38,7 @@
 					        		<i id="help_nom" class="help circle icon"></i><span class="help-message" id="nom_message"></span>
 					        	</label>
 						        <div class="ui left icon input">
-								  	<input id="nom_edit_admin"  name="nom_edit_admin" type="text" placeholder="Entrez votre nom" value="<?php echo ucfirst($userShown->nom); ?>">
+								  	<input id="nom_edit_admin"  name="nom_edit_admin" type="text" placeholder="Nom de l'utilisateur" value="<?php echo ucfirst($userShown->nom); ?>">
 								  	<i class="user icon"></i>  
 								</div>
 								
@@ -50,7 +50,7 @@
 					        		<i id="help_prenom" class="help circle icon"></i><span class="help-message" id="prenom_message"></span>
 					        	</label>
 						        <div class="ui left icon input">
-								  	<input id="prenom_edit_admin"  name="prenom_edit_admin" type="text" placeholder="Entrez votre prenom" value="<?php echo ucfirst($userShown->prenom); ?>">
+								  	<input id="prenom_edit_admin"  name="prenom_edit_admin" type="text" placeholder="Prenom de l'utilisateur" value="<?php echo ucfirst($userShown->prenom); ?>">
 								  	<i class="user icon"></i>  
 								</div>
 							</div>
@@ -61,7 +61,7 @@
 					        		<i id="help_mail" class="help circle icon"></i><span class="help-message" id="mail_message"></span>
 					        	</label>
 						        <div class="ui left icon input">
-								  	<input id="mail_edit_admin"  name="mail_edit_admin" type="text" placeholder="Entrez votre adresse email" value="<?php echo $userShown->email; ?>">
+								  	<input id="mail_edit_admin"  name="mail_edit_admin" type="text" placeholder="Email de l'utilisateur" value="<?php echo $userShown->email; ?>">
 								  	<i class="at icon"></i> 
 								</div>
 								
@@ -73,7 +73,7 @@
 					        		<i id="help_birth" class="help circle icon"></i><span class="help-message" id="birth_message"></span>
 					        	</label>
 						        <div class="ui left icon input">
-								  	<input id="birth_edit_admin"  name="birth_edit_admin" type="date" placeholder="Entrez votre date de naissance" value="<?php echo substr($userShown->date_naissance,0,10); ?>">
+								  	<input id="birth_edit_admin"  name="birth_edit_admin" type="date" placeholder="Date de naissance de l'utilisateur" value="<?php echo substr($userShown->date_naissance,0,10); ?>">
 								  	<i class="birthday icon"></i>
 								</div>
 								
@@ -85,7 +85,7 @@
 					        		<i id="help_cell" class="help circle icon"></i><span class="help-message" id="cell_message"></span>
 					        	</label>
 						        <div class="ui left icon input">
-								  	<input id="cell_edit_admin"  name="cell_edit_admin" type="text" placeholder="Entrez votre telephone portable" value="<?php echo $userShown->tel_portable; ?>">
+								  	<input id="cell_edit_admin"  name="cell_edit_admin" type="text" placeholder="Telephone portable de l'utilisateur" value="<?php echo $userShown->tel_portable; ?>">
 								  	<i class="phone icon"></i>
 								</div>
 								
@@ -97,7 +97,7 @@
 					        		<i id="help_phone" class="help circle icon"></i><span class="help-message" id="phone_message"></span>
 					        	</label>
 						        <div class="ui left icon input">
-								  	<input id="phone_edit_admin"  name="phone_edit_admin" type="text" placeholder="Entrez votre telephone domicile" value="<?php echo $userShown->tel_domicile; ?>">
+								  	<input id="phone_edit_admin"  name="phone_edit_admin" type="text" placeholder="Telephone domicile de l'utilisateur" value="<?php echo $userShown->tel_domicile; ?>">
 								  	<i class="text telephone icon"></i>
 								</div>
 								
@@ -117,7 +117,7 @@
 					        		<i id="help_adresse" class="help circle icon"></i><span class="help-message" id="adresse_message"></span>
 					        	</label>
 						        <div class="ui left icon input">
-								  	<input id="adresse_edit_admin"  name="adresse_edit_admin" type="text" placeholder="Entrez votre adresse" value="<?php echo $userShown->adresse; ?>">
+								  	<input id="adresse_edit_admin"  name="adresse_edit_admin" type="text" placeholder="Adresse de l'utilisateur" value="<?php echo $userShown->adresse; ?>">
 								  	<i class="mail icon"></i>
 								</div>
 								
@@ -141,7 +141,7 @@
 					        		<i id="help_postal" class="help circle icon"></i><span class="help-message" id="postal_message"></span>
 					        	</label>
 						        <div class="ui left icon input">
-								  	<input id="postal_edit_admin"  name="postal_edit_admin" type="number" placeholder="Entrez votre code postale" value="<?php echo $userShown->code_postal; ?>">
+								  	<input id="postal_edit_admin"  name="postal_edit_admin" type="number" placeholder="Code postale de l'utilisateur" value="<?php echo $userShown->code_postal; ?>">
 								  	<i class="road icon"></i>
 								</div>
 								
@@ -153,7 +153,7 @@
 					        		<i id="help_ville" class="help circle icon"></i><span class="help-message" id="ville_message"></span>
 					        	</label>
 						        <div class="ui left icon input">
-								  	<input id="ville_edit_admin"  name="ville_edit_admin" type="text" placeholder="Entrez votre ville" value="<?php echo $userShown->ville; ?>">
+								  	<input id="ville_edit_admin"  name="ville_edit_admin" type="text" placeholder="Ville de l'utilisateur" value="<?php echo $userShown->ville; ?>">
 								  	<i class="university icon"></i>
 								</div>	
 							</div>

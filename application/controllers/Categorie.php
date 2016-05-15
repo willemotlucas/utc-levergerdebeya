@@ -217,4 +217,25 @@ class Categorie extends CI_Controller
         }
     }
 
+    public function admin_show($categId)
+    {
+        $this->session->testAdminLogged();
+        $data['categ'] = \Model\Categorie::find($categId);
+        if(is_null($data['categ']))
+        {
+            show_404();
+            return;
+        }
+
+        $this->load->library('layout');
+        //Add the menu and load needed data
+        $this->layout->include_admin_menu();
+        $this->layout->add_js('jquery.dataTables');
+        $this->layout->add_js('semantic.dataTables');
+        $this->layout->add_js('admin');
+
+        $this->layout->views('layout/menu_admin')
+        ->view('../views/categories/view_admin_categories_product', $data);
+    }
+
 }
