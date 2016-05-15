@@ -13,7 +13,7 @@
               </div>
             </div>
           <?php endforeach; ?>
-          <a class="item">
+          <a class="item" href="<?php echo(base_url('index.php/home/contact')) ?>">
             Contact
           </a>
           <a class="item" href="<?php echo(base_url('index.php/home/magasins')) ?>">
@@ -25,7 +25,7 @@
               <form class="ui form search-form" action="<?php echo base_url() . 'index.php/home/search' ?>" method="POST">
                 <div class="ui action input">
                   <input name="search_text" type="text" placeholder="Rechercher un produit"/>
-                  <input type="submit" id="search_product" class="ui button custom-green submit" value="Rechercher">
+                  <button type="submit" id="search_product" class="ui button custom-green submit">Rechercher</button>
                 </div>
               </form>
           </div>
