@@ -3,7 +3,7 @@
 		<div class="ui breadcrumb">
 		  <a href="<?php echo base_url() . 'index.php/Admin'; ?>" class="section">Accueil Admin</a>
 		  <div class="divider"> / </div>
-		  <a  class="section"><?php echo $famille->denomination;?></a>
+		  <a  href="<?php echo base_url() . 'index.php/Famille/admin_details/'.$famille->id; ?>" class="section"><?php echo $famille->denomination;?></a>
 		  <div class="divider"> / </div>
 		  <a  href="<?php echo base_url() . 'index.php/Produit/admin_addProduct/'.$famille->id; ?>" class="section">Ajout de <?php echo $famille->denomination;?></a>
 		</div>
