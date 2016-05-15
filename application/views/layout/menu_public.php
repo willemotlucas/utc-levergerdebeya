@@ -22,8 +22,12 @@
           <div class="right menu">
           <div class="item">
             <div class="ui icon input">
-              <input type="text" placeholder="Rechercher un produit ...">
-              <i class="search link icon"></i>
+              <form class="ui form search-form" action="<?php echo base_url() . 'index.php/home/search' ?>" method="POST">
+                <div class="ui action input">
+                  <input name="search_text" type="text" placeholder="Rechercher un produit"/>
+                  <input type="submit" id="search_product" class="ui button custom-green submit" value="Rechercher">
+                </div>
+              </form>
           </div>
         </div>
         <?php if($this->session->has_userdata('userLogged')){ ?>
