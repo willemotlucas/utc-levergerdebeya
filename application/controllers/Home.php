@@ -11,8 +11,10 @@ class Home extends CI_Controller {
 		$this->layout->include_public_menu();
 		$data_menu['familles'] = Model\Famille::all();
 
+		$data['products'] = Model\Produit::find_by_produit_phare(1);
+
 		$this->layout->views('layout/menu_public', $data_menu)
-		->view('products/test_product');
+		->view('home/homepage', $data);
 	}
 
 	public function magasins()
