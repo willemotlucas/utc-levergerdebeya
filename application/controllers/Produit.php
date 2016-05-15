@@ -23,15 +23,13 @@ class Produit extends CI_Controller
         $this->layout->include_public_menu();
         $data_menu['familles'] = Model\Famille::all();
 
-        $where = "categorie_id=".$data['product']->categorie()->id." and id!=".$id;
+        $where = "categorie_id=".$data['product']->categorie()->id." and id!=".$id." and produit_du_moment=1";
 
         $data['product_categories'] = $this->db->select('*')
                                                ->from('produit')
                                                ->where($where)
                                                ->limit(2)
                                                ->get();
-
-        //$data['product_categories'] = Model\Produit::limit(2)->find_by_categorie_id($data['product']->categorie()->id);
 
         $this->layout->views('layout/menu_public', $data_menu)
         ->view('../views/products/view_details_product', $data);

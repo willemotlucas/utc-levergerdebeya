@@ -93,7 +93,7 @@
 					    <p>Prix TTC : <?php echo $pcs->prix; ?> €/<?php echo $pcs->typeVente; ?></p>
 					  </div>
 					  <div class="extra content center aligned">
-					    <button class="ui custom-green button"><a href="<?php echo base_url() . 'index.php/produit/details/' . $pcs->id; ?>">Voir le produit</a></button>
+					    <a class="ui custom-green button" href="<?php echo base_url() . 'index.php/produit/details/' . $pcs->id; ?>">Voir le produit</a>
 					  </div>
 					</div>
 				</div>

@@ -33,7 +33,7 @@
 				        	</label>
 					        <div class="ui left icon input">
 							  	<input id="denomination_edit"  name="denomination_edit" type="text" placeholder="Entrez la dénomination du produit" value="<?php echo $product->denomination;?>">
-							  	<i class="user icon"></i>  
+							  	<i class="font icon"></i>  
 							</div>
 						</div>
 
@@ -44,7 +44,7 @@
 				        	</label>
 					        <div class="ui left icon input">
 							  	<input id="origine_edit"  name="origine_edit" type="text" placeholder="Entrez l'origine du produit" value="<?php echo $product->origine;?>">
-							  	<i class="user icon"></i>  
+							  	<i class="world icon"></i>  
 							</div>
 						</div>
 
@@ -79,7 +79,7 @@
 				        	</label>
 					        <div class="ui left icon input">
 							  	<input id="prix_edit"  name="prix_edit" type="number" step="0.01" placeholder="Entrez le prix du produit" value="<?php echo $product->prix;?>">
-							  	<i class="user icon"></i>  
+							  	<i class="euro icon"></i>  
 							</div>
 						</div>
 
