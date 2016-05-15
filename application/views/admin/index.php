@@ -87,7 +87,7 @@
 		        <tr>
 		            <td><?php echo $category->denomination; ?></td>
 		            <td><?php echo $category->count_products(); ?></td>
-		            <td>Voir</td>
+		            <td><a id="<?php echo $category->id ?>" href="<?php echo base_url().'index.php/Categorie/admin_show/'.$category->id;?>">Voir</td>
 		            <td><a id="<?php echo $category->id ?>" class="edit-category-button">Modifier</a></td>
 		            <td><a id="<?php echo $category->id ?>" class="delete-category-button">Supprimer</a></td>
 		        </tr>
