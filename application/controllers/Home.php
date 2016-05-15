@@ -29,6 +29,49 @@ class Home extends CI_Controller {
 		->view('home/magasins');
 	}
 
+	public function contact(){
+		$this->load->library('layout');
+		$this->layout->include_public_menu();
+		$data_menu['familles'] = Model\Famille::all();
+
+		$method = $this->input->method(TRUE);
+		if($method == "GET")
+		{
+			$this->layout->add_js('contact');
+			$this->layout->views('layout/menu_public', $data_menu)
+			->view('home/contact');
+		}
+		else if($method == "POST")
+		{
+			$this->form_validation->set_rules('full_name', 'Nom', 'required|max_length[50]');
+			$this->form_validation->set_rules('email', 'Email', 'required|valid_email|max_length[70]');
+			$this->form_validation->set_rules('objet', 'Objet du message', 'required|max_length[50]');
+			$this->form_validation->set_rules('message', 'Contenu du message', 'required');
+
+			if($this->form_validation->run()){
+				$name = $this->input->post('full_name');
+				$email = $this->input->post('email');
+				$objet = $this->input->post('objet');
+				$message = $this->input->post('message');
+
+				$to = 'willemotlucas@gmail.com';
+				$email_subject = "Nouvel email auvergerdepapa.com de la part de $name";
+				$email_body = "Vous avez reçu un nouvel e-mail envoyé depuis le formulaire de contact de votre site auvergerdepapa.com.\n\n" . 
+				"Voici les détails :\n\Nom : $name\n\nEmail: $email\n\Objet du message: $objet\n\nMessage:\n$message";
+				$headers = "From: contact@auvergerdepapa.com\n";
+				$headers .= "Reply-To: $email";
+				mail($to,$email_subject,$email_body,$headers);
+
+				$this->session->set_flashdata('message-success', 'Votre message a bien été envoyé.');
+			}else{
+				$this->session->set_flashdata('message-error', "Une erreur est survenue lors de l'envoi du message. Veuillez remplir tous les champs.");
+			}
+			redirect('/home/contact', 'refresh');
+		}
+
+
+	}
+
 	public function search()
 	{
 		//Construct navigation bar

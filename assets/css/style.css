@@ -105,6 +105,31 @@ div.menu > div.item > span.text > a {
 form.search-form input{
   width: 0% !important;
 }
+
+/*
+ * ---------------------
+ *
+ * custom contact page
+ *
+ * ---------------------
+*/
+form.contact-form {
+  width: 40% !important;
+}
+
+form.contact-form > div.field {
+  text-align: left !important;
+}
+
+div.contact-header {
+  display: block !important;
+  margin-bottom: 4% !important;
+}
+
+form.contact-form button {
+  right: 0px !important;
+}
+
 /*
  * ---------------------
  *
