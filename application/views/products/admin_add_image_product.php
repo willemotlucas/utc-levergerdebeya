@@ -5,7 +5,9 @@
 		  <div class="divider"> / </div>
 		  <a  href="<?php echo base_url() . 'index.php/Famille/admin_details/'.$product->categorie()->family()->id; ?>" class="section"><?php echo $product->categorie()->family()->denomination;?></a>
 		  <div class="divider"> / </div>
-		  <a  href="<?php echo base_url() . 'index.php/Produit/admin_addProduct/'.$product->categorie()->family()->id; ?>" class="section">Ajout de <?php echo $product->categorie()->family()->denomination;?></a>
+		  <a  href="<?php echo base_url() . 'index.php/Categorie/admin_show/'.$product->categorie()->id; ?>" class="section"><?php echo $product->categorie()->denomination;?></a>
+		  <div class="divider"> / </div>
+		  <a  href="<?php echo base_url() . 'index.php/Produit/admin_details/'.$product->id; ?>" class="section"><?php echo $product->denomination;?></a>
 		  <div class="divider"> / </div>
 		  <a  href="<?php echo base_url() . 'index.php/Produit/admin_addImage/'.$product->id; ?>" class="section"> Image pour le produit <?php echo $product->denomination;?></a>
 		</div>

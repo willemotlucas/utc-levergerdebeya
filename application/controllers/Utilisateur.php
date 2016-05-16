@@ -218,6 +218,7 @@ class Utilisateur extends CI_Controller
         $this->layout->add_js('jquery.dataTables');
         $this->layout->add_js('semantic.dataTables');
         $this->layout->add_js('admin');
+        $this->layout->add_js('delete_user');
 
         $this->layout->views('layout/menu_admin')
         ->view('../views/users/view_all_users', $data);
@@ -279,6 +280,47 @@ class Utilisateur extends CI_Controller
             }
             $this->layout->views('layout/menu_admin')
             ->view('../views/users/admin_show_user', $data);
+        }
+    }
+
+    public function admin_delete()
+    {
+        $this->session->testAdminLogged();
+        $method = $this->input->method(TRUE);
+        $this->load->library('layout');
+
+        if($method == "GET")
+        {
+            //Method GET allow us to retrieve edition form with ajax request
+            $userId = $this->input->get('id', TRUE);
+            $data['get_user'] = Model\Utilisateur::find($userId);
+
+            $output = $this->load->view("../views/users/form_delete_user", $data, true);
+
+            //Return html corresponding to the form
+            echo $output;
+        }
+
+
+        else if($method == "POST")
+        {
+            $this->form_validation->set_rules('user_id', 'Id de l\'utilisateur', 'required');
+
+            if($this->form_validation->run() == false){
+                $this->session->set_flashdata('message-error','Une erreur est survenue ...'); 
+            }
+            else{
+                $user_id = $this->input->post('user_id', TRUE);
+
+                $user = Model\Utilisateur::find($user_id);
+
+                if(!is_null($user)){                            
+                    $user->delete();
+                    $this->session->set_flashdata('message-success','L\'utilisateur '.ucfirst($user->prenom).' '.ucfirst($user->nom).' a bien été supprimée.');
+                }else{
+                    $this->session->set_flashdata('message-error','Une erreur est survenue. Veuillez réessayer ultérieurement.');
+                }
+            }
         }
     }
 

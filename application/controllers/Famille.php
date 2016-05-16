@@ -31,158 +31,116 @@ class Famille extends CI_Controller
     }
 
     public function admin_add(){
-        if($this->session->has_userdata('userLogged'))
+        $this->session->testAdminLogged();
+        $method = $this->input->method(TRUE);
+        $this->load->library('layout');
+
+        if($method == "GET")
         {
-            $currentUser = $this->session->userdata('userLogged');
-            if($currentUser->type == 'admin')
-            {
-                $method = $this->input->method(TRUE);
-                $this->load->library('layout');
+            //Method GET allow us to retrieve edition form with ajax request
+            $data = array();
+            $output = $this->load->view("../views/families/form_add_family", $data, true);
 
-                if($method == "GET")
-                {
-                    //Method GET allow us to retrieve edition form with ajax request
-                    $data = array();
-                    $output = $this->load->view("../views/families/form_add_family", $data, true);
-
-                    //Return html corresponding to the form
-                    echo $output;
-                }
-
-                else if($method == "POST")
-                {
-                    $this->form_validation->set_rules('family_name', 'Nom de la famille', 'required|max_length[50]');
-
-                    if($this->form_validation->run() == false){
-                        $this->session->set_flashdata('message-error','Une erreur est survenue. Veuillez réessayer ultérieurement.'); 
-                    }else{
-                        $family_name = $this->input->post('family_name', TRUE);
-                        $family = new Model\Famille();
-                        $family->denomination = $family_name;
-                        $family->save();
-                        $this->session->set_flashdata('message-success','La famille a bien été ajoutée.');
-                    }
-                }
-            }
-            else
-            {
-                redirect('/Home', 'location');
-            }
+            //Return html corresponding to the form
+            echo $output;
         }
-        else
+
+        else if($method == "POST")
         {
-            redirect('/Home', 'location');
+            $this->form_validation->set_rules('family_name', 'Nom de la famille', 'required|max_length[50]');
+
+            if($this->form_validation->run() == false){
+                $this->session->set_flashdata('message-error','Une erreur est survenue. Veuillez réessayer ultérieurement.'); 
+            }else{
+                $family_name = $this->input->post('family_name', TRUE);
+                $family = new Model\Famille();
+                $family->denomination = $family_name;
+                $family->save();
+                $this->session->set_flashdata('message-success','La famille a bien été ajoutée.');
+            }
         }
     }
 
     public function admin_edit(){
-        if($this->session->has_userdata('userLogged'))
+        $this->session->testAdminLogged();
+        $method = $this->input->method(TRUE);
+        $this->load->library('layout');
+
+        if($method == "GET")
         {
-            $currentUser = $this->session->userdata('userLogged');
-            if($currentUser->type == 'admin')
-            {
-                $method = $this->input->method(TRUE);
-                $this->load->library('layout');
+            //Method GET allow us to retrieve edition form with ajax request
+            $family_id = $this->input->get('id', TRUE);
+            $data['get_family'] = Model\Famille::find($family_id);
 
-                if($method == "GET")
-                {
-                    //Method GET allow us to retrieve edition form with ajax request
-                    $family_id = $this->input->get('id', TRUE);
-                    $data['get_family'] = Model\Famille::find($family_id);
+            $output = $this->load->view("../views/families/form_edit_family", $data, true);
 
-                    $output = $this->load->view("../views/families/form_edit_family", $data, true);
-
-                    //Return html corresponding to the form
-                    echo $output;
-                }
+            //Return html corresponding to the form
+            echo $output;
+        }
 
 
-                else if($method == "POST")
-                {
-                    $this->form_validation->set_rules('family_name', 'Nom de la famille', 'required|max_length[50]');
-                        
-                    if($this->form_validation->run() == false){
-                        $this->session->set_flashdata('message-error','Une erreur est survenue. Veuillez réessayer ultérieurement.'); 
-                    }
-                    else
-                    {
-                        $family_name = $this->input->post('family_name', TRUE);
-                        $family_id = $this->input->post('family_id', TRUE);
-
-                        $family = Model\Famille::find($family_id);
-
-                        if(!is_null($family)){
-                            $family->denomination = $family_name;
-                            $family->save();
-                            $this->session->set_flashdata('message-success','La famille a bien été modifée.');
-                        }else{
-                            $this->session->set_flashdata('message-error','Une erreur est survenue. Veuillez réessayer ultérieurement.');
-                        }
-                    }
-                }
+        else if($method == "POST")
+        {
+            $this->form_validation->set_rules('family_name', 'Nom de la famille', 'required|max_length[50]');
+                
+            if($this->form_validation->run() == false){
+                $this->session->set_flashdata('message-error','Une erreur est survenue. Veuillez réessayer ultérieurement.'); 
             }
             else
             {
-                redirect('/Home', 'location');
+                $family_name = $this->input->post('family_name', TRUE);
+                $family_id = $this->input->post('family_id', TRUE);
+
+                $family = Model\Famille::find($family_id);
+
+                if(!is_null($family)){
+                    $family->denomination = $family_name;
+                    $family->save();
+                    $this->session->set_flashdata('message-success','La famille a bien été modifée.');
+                }else{
+                    $this->session->set_flashdata('message-error','Une erreur est survenue. Veuillez réessayer ultérieurement.');
+                }
             }
-        }
-        else
-        {
-            redirect('/Home', 'location');
         }
     }
 
     public function admin_delete(){
-        if($this->session->has_userdata('userLogged'))
+        $this->session->testAdminLogged();
+        $method = $this->input->method(TRUE);
+        $this->load->library('layout');
+
+        if($method == "GET")
         {
-            $currentUser = $this->session->userdata('userLogged');
-            if($currentUser->type == 'admin')
-            {           
-                $method = $this->input->method(TRUE);
-                $this->load->library('layout');
+            //Method GET allow us to retrieve edition form with ajax request
+            $family_id = $this->input->get('id', TRUE);
+            $data['get_family'] = Model\Famille::find($family_id);
 
-                if($method == "GET")
-                {
-                    //Method GET allow us to retrieve edition form with ajax request
-                    $family_id = $this->input->get('id', TRUE);
-                    $data['get_family'] = Model\Famille::find($family_id);
+            $output = $this->load->view("../views/families/form_delete_family", $data, true);
 
-                    $output = $this->load->view("../views/families/form_delete_family", $data, true);
-
-                    //Return html corresponding to the form
-                    echo $output;
-                }
-
-
-                else if($method == "POST")
-                {
-                    $this->form_validation->set_rules('family_id', 'Id de la famille', 'required');
-
-                    if($this->form_validation->run() == false){
-                        $this->session->set_flashdata('message-error','Une erreur est survenue ...'); 
-                    }
-                    else{
-                        $family_id = $this->input->post('family_id', TRUE);
-
-                        $family = Model\Famille::find($family_id);
-
-                        if(!is_null($family)){                            
-                            $family->delete();
-                            $this->session->set_flashdata('message-success','La catégorie a bien été supprimée.');
-                        }else{
-                            $this->session->set_flashdata('message-error','Une erreur est survenue. Veuillez réessayer ultérieurement.');
-                        }
-                    }
-                }
-            }
-            else
-            {
-                redirect('/Home', 'location');
-            }
+            //Return html corresponding to the form
+            echo $output;
         }
-        else
+
+
+        else if($method == "POST")
         {
-            redirect('/Home', 'location');
+            $this->form_validation->set_rules('family_id', 'Id de la famille', 'required');
+
+            if($this->form_validation->run() == false){
+                $this->session->set_flashdata('message-error','Une erreur est survenue ...'); 
+            }
+            else{
+                $family_id = $this->input->post('family_id', TRUE);
+
+                $family = Model\Famille::find($family_id);
+
+                if(!is_null($family)){                            
+                    $family->delete();
+                    $this->session->set_flashdata('message-success','La catégorie a bien été supprimée.');
+                }else{
+                    $this->session->set_flashdata('message-error','Une erreur est survenue. Veuillez réessayer ultérieurement.');
+                }
+            }
         }
     }
 
@@ -202,6 +160,7 @@ class Famille extends CI_Controller
         $this->layout->add_js('jquery.dataTables');
         $this->layout->add_js('semantic.dataTables');
         $this->layout->add_js('admin');
+        $this->layout->add_js('delete_product');
 
         $this->layout->views('layout/menu_admin')
         ->view('../views/families/view_admin_all_product', $data);

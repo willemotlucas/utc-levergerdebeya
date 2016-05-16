@@ -11,79 +11,89 @@
 
 
 	<h1 class="ui header">Nos magasins</h1>
-	<div class="ui cards">
-	  <div class="card magasin-card">
-	    <div class="content">
-	    	<div class="header">Magasin de Ville d'Avray</div>
-	    </div>
-	   	<div class="content">
-		    <div class="left floated image">
-		    	<img class="ui medium image" src="http://placehold.it/300x200"/>
-		    </div>
-	    	<div class="description magasin-description">
-	    		<p class="description-header">Adresse :</p>
-	    		<p>
-	    			33 Avenue de Saint Cloud <br>
-					92410 Ville d’Avray
-				</p>
-				<p class="description-header">Horaires :</p>
-				<p>
-					Du mardi au dimanche <br>
-					8h00 - 13h00 et 15h30 - 20h00
-	    		</p>
-	    	</div>
-	    </div>
-	    <div class="extra content">
-	    	<div class="ui small images">
-	    		<div class="image">
-			    	<img class="ui image" src="http://placehold.it/300x200"/>
-			    </div>
-			   	<div class="image">
-			    	<img class="ui image" src="http://placehold.it/300x200"/>
-			    </div>
-			    <div class="image">
-			    	<img class="ui image" src="http://placehold.it/300x200"/>
-			    </div>	
-	    	</div>
-	    </div>
-	  </div>
 
-	  <div class="card magasin-card">
-	    <div class="content">
-	    	<div class="header">Magasin de Vélizy-Villacoublay</div>
-	    </div>
-	   	<div class="content">
-		    <div class="left floated image">
-		    	<img class="ui medium image" src="http://placehold.it/300x200"/>
-		    </div>
-	    	<div class="description magasin-description">
-	    		<p class="description-header">Adresse :</p>
-	    		<p>
-	    			Centre commercial du Mail <br>
-					Avenue du Général De Gaulle <br>
-					78140 Vélizy-Villacoublay
-				</p>
-				<p class="description-header">Horaires :</p>
-				<p>
-					Du mardi au dimanche <br>
-					8h00 - 13h00 et 15h30 - 20h00
-	    		</p>
-	    	</div>
-	    </div>
-	    <div class="extra content">
-	    	<div class="ui small images">
-	    		<div class="image">
-			    	<img class="ui image" src="http://placehold.it/300x200"/>
-			    </div>
-			   	<div class="image">
-			    	<img class="ui image" src="http://placehold.it/300x200"/>
-			    </div>
-			    <div class="image">
-			    	<img class="ui image" src="http://placehold.it/300x200"/>
-			    </div>	
-	    	</div>
-	    </div>
-	  </div>
+	<div class="ui segments">
+		<div class="ui segment">
+	    	<h2 class="header">Magasin de Ville d'Avray</p>
+	  	</div>
+	  	<div class="ui segment">
+			<div class="ui two column grid">
+				<div class="eight wide column">
+					<div class="row">
+						<img class="ui fluid image" src="<?php echo base_url().'assets/images/magasins/ville-avray-1.JPG';?>"/>
+					</div>
+				</div>
+				<div class="eight wide column">
+					<div class="row description magasin-description">
+						<p class="description-header">Adresse :</p>
+			    		<p>
+			    			33 Avenue de Saint Cloud <br>
+							92410 Ville d’Avray
+						</p>
+						<p class="description-header">Horaires :</p>
+						<p>
+							Du mardi au dimanche <br>
+							8h00 - 13h00 et 15h30 - 20h00
+			    		</p>
+					</div>
+					<div class="row">
+						<div class="ui three column grid">
+							<div class="five column wide">
+								<img class="ui fluid image" src="<?php echo base_url().'assets/images/magasins/ville-avray-2.JPG';?>"/>
+							</div>
+							<div class="five column wide">
+								<img class="ui fluid image" src="<?php echo base_url().'assets/images/magasins/ville-avray-3.JPG';?>"/>
+							</div>
+							<div class="five column wide">
+								<img class="ui fluid image" src="<?php echo base_url().'assets/images/magasins/ville-avray-4.JPG';?>"/>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
 
+	<div class="ui segments">
+		<div class="ui segment">
+	    	<h2 class="header">Magasin de Vélizy-Villacoublay</p>
+	  	</div>
+	  	<div class="ui segment">
+			<div class="ui two column grid">
+				<div class="eight wide column">
+					<div class="row">
+						<img class="ui fluid image" src="<?php echo base_url().'assets/images/magasins/velizy-1.JPG';?>"/>
+					</div>
+				</div>
+				<div class="eight wide column">
+					<div class="row description magasin-description">
+						<p class="description-header">Adresse :</p>
+			    		<p>
+			    			Centre commercial du Mail <br>
+							Avenue du Général De Gaulle <br>
+							78140 Vélizy-Villacoublay
+						</p>
+						<p class="description-header">Horaires :</p>
+						<p>
+							Du mardi au dimanche <br>
+							8h00 - 13h00 et 15h30 - 20h00
+			    		</p>
+					</div>
+					<div class="row">
+						<div class="ui three column grid">
+							<div class="five column wide">
+								<img class="ui fluid image" src="<?php echo base_url().'assets/images/magasins/velizy-2.JPG';?>"/>
+							</div>
+							<div class="five column wide">
+								<img class="ui fluid image" src="<?php echo base_url().'assets/images/magasins/velizy-3.JPG';?>"/>
+							</div>
+							<div class="five column wide">
+								<img class="ui fluid image" src="<?php echo base_url().'assets/images/magasins/velizy-4.JPG';?>"/>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>

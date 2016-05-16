@@ -34,7 +34,7 @@
 					            <td><?php echo $user->prenom; ?></td>
 					            <td><?php echo $user->email; ?></td>
 					            <td><a id="<?php echo $user->id ?>" href="<?php echo base_url().'index.php/Utilisateur/admin_showUser/'.$user->id ?>" class="edit-family-button">Voir</a></td>
-					            <td><a id="<?php echo $user->id ?>" class="delete-family-button">Supprimer</a></td>
+					            <td><a id="<?php echo $user->id ?>" class="delete-user-button">Supprimer</a></td>
 					        </tr>
 				        <?php endforeach; ?>
 				    </tbody>
