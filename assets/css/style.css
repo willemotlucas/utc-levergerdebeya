@@ -22,6 +22,35 @@ body {
   background-image: url('../images/bg.jpg');
 }
 
+a {
+  cursor: pointer !important;
+}
+
+/*
+ * ---------------------
+ *
+ * custom forms
+ *
+ * ---------------------
+*/
+.ui.input.focus input,
+.ui.input input:focus,
+input:focus {
+  border-color: #9DAB46 !important;
+}
+
+textarea:focus {
+  border-color: #9DAB46 !important;
+}
+
+.ui.selection.dropdown:focus {
+  border-color: #9DAB46 !important;
+}
+
+.ui.checkbox input:focus {
+  border-color: #9DAB46 !important;  
+}
+
 /*
  * ---------------------
  *

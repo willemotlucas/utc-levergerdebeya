@@ -10757,7 +10757,7 @@ img.ui.bordered.image {
 
 .ui.input.focus input,
 .ui.input input:focus {
-  border-color: #85b7d9;
+  border-color: #9DAB46;
   background: #ffffff;
   color: rgba(0, 0, 0, 0.8);
   box-shadow: none;
@@ -10975,7 +10975,7 @@ img.ui.bordered.image {
 }
 
 .ui.labeled.input:not([class*="corner labeled"]) .label:first-child + input:focus {
-  border-left-color: #85b7d9;
+  border-left-color: #9DAB46;
 }
 
 /* Regular Label on Right */
@@ -10992,7 +10992,7 @@ img.ui.bordered.image {
 }
 
 .ui[class*="right labeled"].input input:focus {
-  border-right-color: #85b7d9 !important;
+  border-right-color: #9DAB46 !important;
 }
 
 /* Corner Label */
@@ -11094,7 +11094,7 @@ img.ui.bordered.image {
 /* Input Focus */
 
 .ui.action.input:not([class*="left action"]) input:focus {
-  border-right-color: #85b7d9 !important;
+  border-right-color: #9DAB46 !important;
 }
 
 /* Button on Left */
@@ -11120,7 +11120,7 @@ img.ui.bordered.image {
 /* Input Focus */
 
 .ui[class*="left action"].input > input:focus {
-  border-left-color: #85b7d9 !important;
+  border-left-color: #9DAB46 !important;
 }
 
 /*--------------------
@@ -16483,7 +16483,7 @@ ol.ui.horizontal.list li:before,
 .ui.form input[type="text"]:focus,
 .ui.form input[type="url"]:focus {
   color: rgba(0, 0, 0, 0.95);
-  border-color: #85b7d9;
+  border-color: #9DAB46;
   border-radius: 0.28571429rem;
   background: #ffffff;
   box-shadow: 0px 0em 0em 0em rgba(34, 36, 38, 0.35) inset;
@@ -16491,7 +16491,7 @@ ol.ui.horizontal.list li:before,
 
 .ui.form textarea:focus {
   color: rgba(0, 0, 0, 0.95);
-  border-color: #85b7d9;
+  border-color: #9DAB46;
   border-radius: 0.28571429rem;
   background: #ffffff;
   box-shadow: 0px 0em 0em 0em rgba(34, 36, 38, 0.35) inset;
