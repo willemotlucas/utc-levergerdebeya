@@ -29,7 +29,7 @@
 				        	</label>
 					        <div class="ui left icon input">
 							  	<input id="denomination_create"  name="denomination_create" type="text" placeholder="Entrez la dénomination du produit" value="">
-							  	<i class="user icon"></i>  
+							  	<i class="font icon"></i>  
 							</div>
 						</div>
 
@@ -40,7 +40,7 @@
 				        	</label>
 					        <div class="ui left icon input">
 							  	<input id="origine_create"  name="origine_create" type="text" placeholder="Entrez l'origine du produit" value="">
-							  	<i class="user icon"></i>  
+							  	<i class="world icon"></i>  
 							</div>
 						</div>
 
@@ -68,7 +68,7 @@
 				        	</label>
 					        <div class="ui left icon input">
 							  	<input id="prix_create"  name="prix_create" type="number" step="0.01" placeholder="Entrez le prix du produit" value="">
-							  	<i class="user icon"></i>  
+							  	<i class="euro icon"></i>  
 							</div>
 						</div>
 

@@ -15,6 +15,7 @@
 
 	<div class="ui four column centered grid">
 		<?php foreach($products as $product):?>
+			<?php if($product->produit_du_moment == 1){?>
 			<div class="column">
 				<div class="segment">
 					<div class="ui card">
@@ -34,12 +35,12 @@
 					    <p>Prix TTC : <?php echo $product->prix; ?> €/<?php echo $product->typeVente; ?></p>
 					  </div>
 					  <div class="extra content center aligned">
-					    <button class="ui custom-green button"><a href="<?php echo base_url() . 'index.php/produit/details/' . $product->id; ?>">Voir le produit</a></button>
+					    <a class="ui custom-green button" href="<?php echo base_url() . 'index.php/produit/details/' . $product->id; ?>">Voir le produit</a>
 					  </div>
 					</div>
 				</div>
 			</div>
-		<?php endforeach; ?>
+		<?php }endforeach; ?>
 	</div>
 </div>
 
