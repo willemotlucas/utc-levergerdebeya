@@ -68,7 +68,7 @@ class Categorie extends CI_Controller
                     $this->form_validation->set_rules('family_id', 'Famille de la catégorie', 'required');
 
                     if($this->form_validation->run() == false){
-                        $this->session->set_flashdata('message-error','Une erreur est survenue ...'); 
+                        $this->session->set_flashdata('message-error','1 Une erreur est survenue ...'); 
                     }else{
                         $category_name = $this->input->post('category_name', TRUE);
                         $category_id = $this->input->post('category_id', TRUE);
@@ -81,7 +81,7 @@ class Categorie extends CI_Controller
                             $category->denomination = $category_name;
                             $category->famille_id = $family_id;
                             
-                            if(!empty($_FILES)){
+                            if(isset($_FILES['picture_create'])){
                                 $config['upload_path']          = './assets/images/';
                                 $config['allowed_types']        = 'jpg|png';
                                 $config['file_name']            = $category->id.'-'.$category->denomination.'-'.$category->family()->denomination;
@@ -92,10 +92,11 @@ class Categorie extends CI_Controller
                                 if (!$this->upload->do_upload('picture_create'))
                                 {
                                     $error = $this->upload->display_errors();
-                                    $this->session->set_flashdata('message-error', $eror);
+                                    $this->session->set_flashdata('message-error', "Une erreur est survenue pendant le téléchargement de l'image. Veuillez réessayer ultérieurement.");
                                 }
                                 else
                                 {
+                                    error_log('file uploading');
                                     $this->upload->data();
                                     $category->image = $this->upload->data('file_name');
                                     $category->save();
@@ -107,7 +108,7 @@ class Categorie extends CI_Controller
                             }
                                 
                         }else{
-                            $this->session->set_flashdata('message-error','Une erreur est survenue ...'); 
+                            $this->session->set_flashdata('message-error','2 Une erreur est survenue ...'); 
                         }
                     }
                 }
@@ -164,30 +165,38 @@ class Categorie extends CI_Controller
                             $category->famille_id = $family_id;
 
                             if($category->save()){
-                                $last_category = Model\Categorie::last_created();
 
-                                $config['upload_path']          = './assets/images/';
-                                $config['allowed_types']        = 'jpg|png';
-                                $config['file_name']            = $category->id.'-'.$category->denomination.'-'.$category->family()->denomination;
-                                $config['overwrite']            = TRUE;
+                                //Si il y a une image à uploader
+                                if(isset($_FILES['picture_create'])){
+                                    $last_category = Model\Categorie::last_created();
+                                    $config['upload_path']          = './assets/images/';
+                                    $config['allowed_types']        = 'jpg|png';
+                                    $config['file_name']            = $last_category->id.'-'.$last_category->denomination.'-'.$last_category->family()->denomination;
+                                    $config['overwrite']            = TRUE;
 
-                                $this->load->library('upload', $config);
+                                    $this->load->library('upload', $config);
 
-                                if (!$this->upload->do_upload('picture_create'))
-                                {
-                                    $error = $this->upload->display_errors();
-                                    $this->session->set_flashdata('message-error', $eror);
-                                }
-                                else
-                                {
-                                    $this->upload->data();
-                                    $last_category->image = $this->upload->data('file_name');
-                                    $last_category->save();
+                                    if (!$this->upload->do_upload('picture_create'))
+                                    {
+                                        $error = $this->upload->display_errors();
+                                        $this->session->set_flashdata('message-error', $eror);
+                                    }
+                                    else
+                                    {
+                                        $this->upload->data();
+                                        $last_category->image = $this->upload->data('file_name');
+                                        $last_category->save();
+                                        $this->session->set_flashdata('message-success','La catégorie a bien été ajoutée.');
+                                    }
+                                } //Sinon on affiche seulement un message de succès
+                                else{
                                     $this->session->set_flashdata('message-success','La catégorie a bien été ajoutée.');
                                 }
+                            }else{
+                                $this->session->set_flashdata('message-error','Une erreur est survenue ...');   
                             }
                         }else{
-                            $this->session->set_flashdata('message-error','2 Une erreur est survenue ...'); 
+                            $this->session->set_flashdata('message-error','Une erreur est survenue ...'); 
                         }
                     }
                 }

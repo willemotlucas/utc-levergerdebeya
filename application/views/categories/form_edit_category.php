@@ -5,7 +5,7 @@
   </div>
   
   <div class="image content">
-    <form id="edit_category" class="ui form category">
+    <form id="edit_category" class="ui form category" enctype="multipart/form-data">
 
       <div class="ui medium image left floated">
         <?php 

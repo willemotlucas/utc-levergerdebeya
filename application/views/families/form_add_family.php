@@ -5,14 +5,15 @@
   </div>
 
   <div class="image content">
-
-    <div class="ui medium image">
-      <img src="http://placehold.it/500x400"/>
-      <a>Modifier l'image</a>
-    </div>
     
-    <div class="description">
-      <form class="ui form family">
+    <form id="add_family" class="ui form family" enctype="multipart/form-data">
+      <div class="ui medium image left floated">
+        <img id="image_preview" src="http://placehold.it/500x400"/>
+        <label>Choisir une image</label>
+        <input id="picture_create"  name="picture_create" type="file"/>
+      </div>
+    
+      <div class="description">
         <div class="field">
           <label>Nom de la famille</label>
           <div class="ui input">
@@ -29,8 +30,8 @@
           Enregistrer
           <i class="checkmark icon"></i>
         </div>
-      </form>
-    </div>
+      </div>
+    </form>
 
   </div>
 

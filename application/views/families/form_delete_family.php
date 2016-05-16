@@ -15,10 +15,10 @@
   </div>
 
   <div class="actions">
-    <div id="button-cancel" class="ui red deny button">
+    <div id="button-cancel" class="ui custom-green button">
       Annuler
     </div>
-    <div id="button-delete" class="ui custom-green submit right labeled icon button">
+    <div id="button-delete" class="ui red deny submit right labeled icon button">
       Supprimer
       <i class="checkmark icon"></i>
     </div>

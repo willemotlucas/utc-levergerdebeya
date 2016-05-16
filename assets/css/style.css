@@ -161,7 +161,7 @@ button.custom-green > a {
  *
  * ---------------------
 */
-form.ui.form.category > div.description{
+form.ui.form.category > div.description, form.ui.form.family > div.description{
   display: inline-block !important;
 }
 
