@@ -55,7 +55,36 @@ class Famille extends CI_Controller
                 $family_name = $this->input->post('family_name', TRUE);
                 $family = new Model\Famille();
                 $family->denomination = $family_name;
-                $family->save();
+                if($family->save()){
+                    //Si il y a une image à uploader
+                    if(isset($_FILES['picture_create'])){
+                        $last_family = Model\Famille::last_created();
+                        $config['upload_path']          = './assets/images/';
+                        $config['allowed_types']        = 'jpg|png';
+                        $config['file_name']            = $last_family->id.'-'.$last_family->denomination;
+                        $config['overwrite']            = TRUE;
+
+                        $this->load->library('upload', $config);
+
+                        if (!$this->upload->do_upload('picture_create'))
+                        {
+                            $error = $this->upload->display_errors();
+                            $this->session->set_flashdata('message-error', $eror);
+                        }
+                        else
+                        {
+                            $this->upload->data();
+                            $last_family->image = $this->upload->data('file_name');
+                            $last_family->save();
+                            $this->session->set_flashdata('message-success','La famille a bien été ajoutée.');
+                        }
+                    } //Sinon on affiche seulement un message de succès
+                    else{
+                        $this->session->set_flashdata('message-success','La famille a bien été ajoutée.');
+                    }
+                }else{
+                    $this->session->set_flashdata('message-error','Une erreur est survenue. Veuillez réessayer ultérieurement.'); 
+                }
                 $this->session->set_flashdata('message-success','La famille a bien été ajoutée.');
             }
         }
@@ -84,6 +113,7 @@ class Famille extends CI_Controller
             $this->form_validation->set_rules('family_name', 'Nom de la famille', 'required|max_length[50]');
                 
             if($this->form_validation->run() == false){
+                error_log('validation failed');
                 $this->session->set_flashdata('message-error','Une erreur est survenue. Veuillez réessayer ultérieurement.'); 
             }
             else
@@ -95,8 +125,34 @@ class Famille extends CI_Controller
 
                 if(!is_null($family)){
                     $family->denomination = $family_name;
-                    $family->save();
-                    $this->session->set_flashdata('message-success','La famille a bien été modifée.');
+
+                    //Si il y a une image à uploader
+                    if(isset($_FILES['picture_create'])){
+                        error_log('file to upload');
+                        $config['upload_path']          = './assets/images/';
+                        $config['allowed_types']        = 'jpg|png';
+                        $config['file_name']            = $family->id.'-'.$family->denomination;
+                        $config['overwrite']            = TRUE;
+
+                        $this->load->library('upload', $config);
+
+                        if (!$this->upload->do_upload('picture_create'))
+                        {
+                            $error = $this->upload->display_errors();
+                            $this->session->set_flashdata('message-error', $eror);
+                        }
+                        else
+                        {
+                            $this->upload->data();
+                            $family->image = $this->upload->data('file_name');
+                            $family->save();
+                            $this->session->set_flashdata('message-success','La catégorie a bien été ajoutée.');
+                        }
+                    }
+                    else{
+                        $family->save();
+                        $this->session->set_flashdata('message-success','La famille a bien été modifée.');
+                    }
                 }else{
                     $this->session->set_flashdata('message-error','Une erreur est survenue. Veuillez réessayer ultérieurement.');
                 }

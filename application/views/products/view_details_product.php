@@ -34,7 +34,7 @@
 					<div class="quantite">
 						<p>Quantité :
 							<span class="ui input">
-							  <input type="number" oninput="calculate_price(this, <?php echo $product->prix ?>);" placeholder="écrivez la quantité">
+							  <input type="number" oninput="calculate_price(this, <?php echo $product->prix ?>);" placeholder="écrivez la quantité" min="0">
 							</span>
 							<?php
 								if(strcmp($product->typeVente, 'kg') == 0)

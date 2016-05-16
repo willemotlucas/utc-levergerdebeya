@@ -1,7 +1,7 @@
 <div class="content-container">
 	<div class="ui grid">
 		<div class="ui breadcrumb">
-		  <a href="<?php echo base_url() . 'index.php/Admin'; ?>" class="section">Accueil Admin - Gestion des produits</a>
+		  <a href="<?php echo base_url() . 'index.php/Admin'; ?>" class="section">Accueil Admin / Gestion des produits</a>
 		 </div>
 	</div>
 </div>

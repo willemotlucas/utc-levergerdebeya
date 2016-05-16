@@ -22,6 +22,35 @@ body {
   background-image: url('../images/bg.jpg');
 }
 
+a {
+  cursor: pointer !important;
+}
+
+/*
+ * ---------------------
+ *
+ * custom forms
+ *
+ * ---------------------
+*/
+.ui.input.focus input,
+.ui.input input:focus,
+input:focus {
+  border-color: #9DAB46 !important;
+}
+
+textarea:focus {
+  border-color: #9DAB46 !important;
+}
+
+.ui.selection.dropdown:focus {
+  border-color: #9DAB46 !important;
+}
+
+.ui.checkbox input:focus {
+  border-color: #9DAB46 !important;  
+}
+
 /*
  * ---------------------
  *
@@ -152,6 +181,17 @@ div.modal h3 {
 
 button.custom-green > a {
 	color:white!important;
+}
+
+/*
+ * ---------------------
+ *
+ * custom green-color
+ *
+ * ---------------------
+*/
+form.ui.form.category > div.description, form.ui.form.family > div.description{
+  display: inline-block !important;
 }
 
 /*
