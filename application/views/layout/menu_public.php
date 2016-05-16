@@ -1,7 +1,7 @@
   <div class="ui centered grid">
     <div class="center aligned column">
       <div class="row">
-          <a href="<?php echo base_url().'index.php/';?>"><img class="ui fluid image" src="<?php echo base_url().'assets/images/banière.png';?>"/></a>
+          <img class="ui fluid image" src="<?php echo base_url().'assets/images/banière.png';?>"/>
       </div>
       <div class="ui menu">
           <?php foreach($familles as $famille): ?>
