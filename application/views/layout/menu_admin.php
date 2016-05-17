@@ -5,12 +5,12 @@
       <a href="<?php echo base_url() . 'index.php/Utilisateur/admin_gestion' ?>"class="item">Gestion des utilisateurs</a>
 
         <div class="right menu">
-        <div class="item">
+        <!--<div class="item">
           <div class="ui icon input">
             <input type="text" placeholder="Rechercher un produit ...">
             <i class="search link icon"></i>
           </div>
-        </div>
+        </div>-->
        <?php if($this->session->has_userdata('userLogged')){ ?>
           <div class="ui pointing dropdown link item">
             <i id="userIcon" class="user icon"></i>

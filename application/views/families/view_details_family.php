@@ -20,7 +20,12 @@
 					  	<a class="header" href="<?php echo base_url() . 'index.php/categorie/details/' . $categorie->id; ?>"><?php echo $categorie->denomination; ?></a>
 					  </div>
 					  <div class="image">
-					    <img src="http://placehold.it/350x200">
+					   	<?php 
+							if($categorie->image != null)
+								echo '<img src="'.base_url().'/assets/images/'.$categorie->image.'"/>';
+							else
+								echo '<img src="http://placehold.it/500x400"/>';
+					  	?>
 					  </div>
 					</div>
 				</div>

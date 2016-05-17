@@ -28,7 +28,7 @@
 					<h1 class="ui dividing header"><?php echo ucfirst($product->denomination); ?></h1>
 					<br/>
 					<div class="origine">
-						<p>Originie : <?php echo ucfirst($product->origine);?></p>
+						<p>Origine : <?php echo ucfirst($product->origine);?></p>
 					</div>
 					<br/>
 					<div class="quantite">

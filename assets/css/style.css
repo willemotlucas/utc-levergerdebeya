@@ -51,6 +51,13 @@ textarea:focus {
   border-color: #9DAB46 !important;  
 }
 
+.ui.selection.active.dropdown .menu{
+  border-color: #9DAB46 !important;  
+}
+
+.ui.selection.active.dropdown:hover .menu{
+  border-color: #9DAB46 !important;  
+}
 /*
  * ---------------------
  *
