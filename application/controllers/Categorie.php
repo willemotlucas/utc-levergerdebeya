@@ -83,7 +83,7 @@ class Categorie extends CI_Controller
                             
                             if(isset($_FILES['picture_create'])){
                                 $config['upload_path']          = './assets/images/';
-                                $config['allowed_types']        = 'jpg|png';
+                                $config['allowed_types']        = 'jpg|png|jpeg';
                                 $config['file_name']            = $category->id.'-'.$category->denomination.'-'.$category->family()->denomination;
                                 $config['overwrite']            = TRUE;
 
@@ -96,7 +96,6 @@ class Categorie extends CI_Controller
                                 }
                                 else
                                 {
-                                    error_log('file uploading');
                                     $this->upload->data();
                                     $category->image = $this->upload->data('file_name');
                                     $category->save();

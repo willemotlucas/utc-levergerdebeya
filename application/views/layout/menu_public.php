@@ -28,7 +28,7 @@
               <form class="ui form search-form" action="<?php echo base_url() . 'index.php/home/search' ?>" method="POST">
                 <div class="ui action input">
                   <input name="search_text" type="text" placeholder="Rechercher un produit"/>
-                  <button type="submit" id="search_product" class="ui button custom-green submit">Rechercher</button>
+                  <button type="submit" id="search_product" class="ui hidden button custom-green submit">Rechercher</button>
                 </div>
               </form>
           </div>
