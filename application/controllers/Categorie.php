@@ -285,6 +285,7 @@ class Categorie extends CI_Controller
         $this->layout->add_js('jquery.dataTables');
         $this->layout->add_js('semantic.dataTables');
         $this->layout->add_js('admin');
+        $this->layout->add_js('delete_product');
 
         $this->layout->views('layout/menu_admin')
         ->view('../views/categories/view_admin_categories_product', $data);

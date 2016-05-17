@@ -1,5 +1,8 @@
 <div class="ui centered grid">
   <div class="center aligned column">
+    <div class="row">
+          <a href="<?php echo base_url().'index.php/';?>"><img class="ui fluid image" src="<?php echo base_url().'assets/images/baniere_admin.png';?>"/></a>
+    </div>
     <div class="ui menu">
       <a href="<?php echo base_url() . 'index.php/Admin' ?>" class="item">Gestion des produits</a>
       <a href="<?php echo base_url() . 'index.php/Utilisateur/admin_gestion' ?>"class="item">Gestion des utilisateurs</a>
