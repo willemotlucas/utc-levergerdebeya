@@ -20,7 +20,14 @@
 					  	<a class="header" href="<?php echo base_url() . 'index.php/categorie/details/' . $categorie->id; ?>"><?php echo $categorie->denomination; ?></a>
 					  </div>
 					  <div class="image">
-					    <img src="http://placehold.it/350x200">
+					  	<?php if(is_null($categorie->image)){?>
+					    	<img src="http://placehold.it/350x200">
+					    <?php } else {?>
+					    	<img src="<?php echo base_url().'assets/images/'.$categorie->image;?>">
+					    <?php }?>
+					  </div>
+					  <div class="extra content center aligned">
+					    <a class="ui custom-green button" href="<?php echo base_url() . 'index.php/categorie/details/' . $categorie->id; ?>">Voir les <?php echo $categorie->denomination;?></a>
 					  </div>
 					</div>
 				</div>
